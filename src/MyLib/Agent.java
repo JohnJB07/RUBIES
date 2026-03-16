@@ -10,7 +10,7 @@ package MyLib;
  */
 public class Agent extends Stakeholders {
     private String licenseNo;
-    
+            
     public Agent(String role, String username, String password) {
         super(role, username, password);
     }

@@ -9,5 +9,4 @@ package MyApp;
  * @author Jayvee
  */
 public class Test {
-    
 }
