@@ -19,6 +19,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form DashboardE
+     * @param user
+     * @param re
      */
     public Dashboard(User user, RealEstate re) {
         this.user = user;
@@ -1232,7 +1234,6 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         RealEstateWindow rew = new RealEstateWindow(user);
         System.out.println("[UPDATE]: CLICKED LOT: " + evt.getActionCommand());
-        realEstate.showReport(evt.getActionCommand());
         rew.setLocationRelativeTo(null);
         rew.setVisible(true);
     }//GEN-LAST:event_lot1ActionPerformed

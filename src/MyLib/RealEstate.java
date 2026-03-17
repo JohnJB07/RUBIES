@@ -29,7 +29,7 @@ public class RealEstate implements ICalculate, ISearch {
     }
     
     public Lot showReport(String buttonId) {
-        return lot[Integer.parseInt(buttonId)];
+        return lot[Integer.parseInt(buttonId) - 1];
     }
     
     public void populateLots() {
