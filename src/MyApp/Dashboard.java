@@ -22,6 +22,21 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard(User user) {
         this.user = user;
         initComponents();
+        switch(User.getLoginType()) {
+            case 1:
+                String loginMsgAgent = user.getAgent()[User.getLoginIndx()].getUsername();
+                welcomeMsg.setText("Welcome " + loginMsgAgent);
+                break;
+            case 2:
+                String loginMsgCustomer = user.getCustomer()[User.getLoginIndx()].getUsername();
+                welcomeMsg.setText("Welcome " + loginMsgCustomer);
+                break;
+            default:
+                System.out.println("[ERROR] User does not exist!");
+                break;
+        }
+        
+        balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
     }
 
     /**
@@ -34,6 +49,12 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        balance = new javax.swing.JLabel();
+        welcomeMsg = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        rubies_bg = new javax.swing.JPanel();
+        rubies_label = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         blk1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lot1Blk1 = new javax.swing.JPanel();
@@ -56,11 +77,6 @@ public class Dashboard extends javax.swing.JFrame {
         lot18 = new javax.swing.JPanel();
         lot19 = new javax.swing.JPanel();
         lot20 = new javax.swing.JPanel();
-        balance = new javax.swing.JLabel();
-        rubies_bg = new javax.swing.JPanel();
-        rubies_label = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        welcomeMsg = new javax.swing.JLabel();
         blk2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         javax.swing.JPanel lot_1 = new javax.swing.JPanel();
@@ -149,7 +165,7 @@ public class Dashboard extends javax.swing.JFrame {
         lot98 = new javax.swing.JPanel();
         lot99 = new javax.swing.JPanel();
         lot100 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -159,6 +175,42 @@ public class Dashboard extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SIGN OUT");
         jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        balance.setText("Balance:");
+
+        jLabel7.setText("You are hovering on: ");
+
+        rubies_bg.setBackground(new java.awt.Color(0, 0, 0));
+
+        rubies_label.setBackground(new java.awt.Color(0, 0, 0));
+        rubies_label.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        rubies_label.setForeground(new java.awt.Color(255, 0, 51));
+        rubies_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rubies_label.setText("RUBIES");
+        rubies_label.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rubies_logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout rubies_bgLayout = new javax.swing.GroupLayout(rubies_bg);
+        rubies_bg.setLayout(rubies_bgLayout);
+        rubies_bgLayout.setHorizontalGroup(
+            rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rubies_bgLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(0, 15, Short.MAX_VALUE))
+        );
+        rubies_bgLayout.setVerticalGroup(
+            rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rubies_bgLayout.createSequentialGroup()
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addGroup(rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap())
+        );
 
         blk1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -505,42 +557,6 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(lot19, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        balance.setText("Balance:");
-
-        rubies_bg.setBackground(new java.awt.Color(0, 0, 0));
-
-        rubies_label.setBackground(new java.awt.Color(0, 0, 0));
-        rubies_label.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        rubies_label.setForeground(new java.awt.Color(255, 0, 51));
-        rubies_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rubies_label.setText("RUBIES");
-        rubies_label.setPreferredSize(new java.awt.Dimension(100, 100));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rubies_logo.png"))); // NOI18N
-
-        javax.swing.GroupLayout rubies_bgLayout = new javax.swing.GroupLayout(rubies_bg);
-        rubies_bg.setLayout(rubies_bgLayout);
-        rubies_bgLayout.setHorizontalGroup(
-            rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rubies_bgLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
-        rubies_bgLayout.setVerticalGroup(
-            rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rubies_bgLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addGroup(rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap())
-        );
-
-        welcomeMsg.setText("Welcome back potato");
 
         blk2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -1926,31 +1942,15 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel7.setText("You are hovering on: ");
+        jButton2.setText("Add Balance");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(411, 411, 411)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(468, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(blk1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(blk2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1958,18 +1958,32 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(blk4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(blk5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(79, 79, 79))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(429, 429, 429)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2)
+                    .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(blk1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1980,7 +1994,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(blk4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(blk5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -1996,6 +2010,14 @@ public class Dashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        BalanceWindow balanceW = new BalanceWindow(admin, user);
+        balanceW.setLocationRelativeTo(null);
+        balanceW.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2007,6 +2029,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel blk4;
     private javax.swing.JPanel blk5;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

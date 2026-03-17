@@ -141,18 +141,38 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Startup startupWindow = new Startup(admin, user);
+        startupWindow.setLocationRelativeTo(null);
         startupWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Dashboard dashboard;
         Startup startupWindow = new Startup();
         startupWindow.setResizable(false);
         
         String username = jTextField1.getText().toString(); // Username
         String password = jTextField2.getText().toString(); //password
-        
+        // Check if there are agents
+        if (user.getAgentCnt() == 0) {
+            System.out.println("[NOTICE]: No agent list skipping..");
+        } else {
+            for (int i = 0; i < user.getAgentCnt(); i++) {
+                Agent currentAgent = user.getAgent()[i];
+                if (username.equals(currentAgent.getUsername()) && password.equals(currentAgent.getPassword())) {
+                    System.out.println("[SUCCESS]: Logging in as " + currentAgent.getUsername());
+                    User.setLoginType(1);
+                    User.setLoginIndx(i);
+                    dashboard = new Dashboard(user);
+                    dashboard.setLocationRelativeTo(null);
+                    dashboard.setVisible(true);
+                    dispose();
+                } else {
+                    System.out.println("[NOTICE]: Account exists but wrong password");
+                }
+            }
+        }    
         
         if (username.equals("") || password.equals("")) {
             System.out.println("[ERROR]: Incomplete input field");
@@ -163,11 +183,14 @@ public class Login extends javax.swing.JFrame {
                 System.out.println("[NOTICE]: No customer list skipping..");
             } else {
                 // Check for comparisons
-                Dashboard dashboard = new Dashboard(user);
                 for (int i = 0; i < user.getCustomerCnt(); i++) {
                     Customer currentUser = user.getCustomer()[i];
                     if (username.equals(currentUser.getUsername()) && password.equals(currentUser.getPassword())) {
                         System.out.println("[SUCCESS]: Logging in as " + currentUser.getUsername());
+                        User.setLoginType(2);
+                        User.setLoginIndx(i);
+                        
+                        dashboard = new Dashboard(user);
                         dashboard.setLocationRelativeTo(null);
                         dashboard.setVisible(true);
                         dispose();
@@ -177,24 +200,6 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         
-            // Check if there are agents
-            if (user.getAgentCnt() == 0) {
-                System.out.println("[NOTICE]: No agent list skipping..");
-            } else {
-                Dashboard dashboard = new Dashboard(user);
-                for (int i = 0; i < user.getAgentCnt(); i++) {
-                    Agent currentAgent = user.getAgent()[i];
-                    if (username.equals(currentAgent.getUsername()) && password.equals(currentAgent.getPassword())) {
-                        System.out.println("[SUCCESS]: Logging in as " + currentAgent.getUsername());
-                        dashboard.setLocationRelativeTo(null);
-                        dashboard.setVisible(true);
-                        dispose();
-                    } else {
-                        System.out.println("[NOTICE]: Account exists but wrong password");
-                    }
-                }
-            }
-            
             Admin admin = new Admin();
             if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
                 ManageAgent agentWindow = new ManageAgent(admin, user);

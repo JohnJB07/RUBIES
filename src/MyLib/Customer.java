@@ -9,7 +9,7 @@ package MyLib;
  * @author Jayvee
  */
 public class Customer extends Stakeholders {
-    private double accountBalance;
+    private double accountBalance = 0;
     private double totalOwed;
     private double GMI = 0;
     
@@ -26,9 +26,17 @@ public class Customer extends Stakeholders {
     }
     
     public void addBalance(double amount) {
-        
+        accountBalance += amount;
+    }
+    
+    public double getBalance() {
+        return accountBalance;
     }
 
+    public String balanceString() {
+        return "Balance: " + accountBalance;
+    }
+    
     public double getGMI() {
         return GMI;
     }

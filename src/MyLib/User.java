@@ -14,8 +14,8 @@ public class User {
     private Admin admin = new Admin();
     private static int customerCnt = 0; // length and indexing GMI
     private static int agentCnt = 0;
-    private int lotHover;
-    private int loggedIn;
+    private static int loginType;
+    private static int loginIndx;
 
     public void register(int role, String username, String password) {
         switch (role) {
@@ -58,5 +58,21 @@ public class User {
 
     public static int getAgentCnt() {
         return agentCnt;
+    }
+
+    public static int getLoginType() {
+        return loginType;
+    }
+
+    public static void setLoginType(int loginType) {
+        User.loginType = loginType;
+    }
+
+    public static int getLoginIndx() {
+        return loginIndx;
+    }
+
+    public static void setLoginIndx(int loginIndx) {
+        User.loginIndx = loginIndx;
     }
 }
