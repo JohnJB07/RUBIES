@@ -11,5 +11,5 @@ package MyLib;
 public interface ICalculate {
     public double calculateGMI(String a, double b);
     public double calculateAmortization(double a);
-    public double calculateTotalPrice(double a);
+    public double calculateTotalPrice(double a, double sqmeters);
 }

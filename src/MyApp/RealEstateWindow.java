@@ -80,8 +80,10 @@ public class RealEstateWindow extends javax.swing.JFrame {
         jLabel7.setText("Status:");
 
         jButton1.setText("BUY");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton2.setText("RESERVE");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setText("CLOSE");
         jButton3.addActionListener(this::jButton3ActionPerformed);
@@ -200,6 +202,17 @@ public class RealEstateWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("[UPDATE]: Reserved lot");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("[UPDATE]: Bought lot");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

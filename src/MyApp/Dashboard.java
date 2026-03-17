@@ -232,7 +232,8 @@ public class Dashboard extends javax.swing.JFrame {
 
         balance.setText("Balance:");
 
-        welcomeMsg.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        welcomeMsg.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        welcomeMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jButton2.setText("Add Balance");
         jButton2.addActionListener(this::jButton2ActionPerformed);
@@ -241,23 +242,23 @@ public class Dashboard extends javax.swing.JFrame {
         welcomeBalance.setLayout(welcomeBalanceLayout);
         welcomeBalanceLayout.setHorizontalGroup(
             welcomeBalanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomeBalanceLayout.createSequentialGroup()
+            .addGroup(welcomeBalanceLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomeBalanceLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addGroup(welcomeBalanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(welcomeMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         welcomeBalanceLayout.setVerticalGroup(
             welcomeBalanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomeBalanceLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(welcomeBalanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))

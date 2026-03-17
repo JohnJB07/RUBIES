@@ -6,6 +6,7 @@ package MyApp;
 import MyLib.Admin;
 import MyLib.RealEstate;
 import MyLib.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,7 @@ public class GMI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        confirmGMI = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,8 +54,8 @@ public class GMI extends javax.swing.JFrame {
 
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
-        jButton1.setText("Confirm");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        confirmGMI.setText("Confirm");
+        confirmGMI.addActionListener(this::confirmGMIActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,7 +63,7 @@ public class GMI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(jButton1)
+                .addComponent(confirmGMI)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(43, Short.MAX_VALUE)
@@ -79,7 +80,7 @@ public class GMI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(confirmGMI)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -118,18 +119,27 @@ public class GMI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void confirmGMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmGMIActionPerformed
         // TODO add your handling code here:
         Startup startupWindow = new Startup(admin, user, re);
-        double gmi = Double.parseDouble(jTextField1.getText());
-        user.getCustomer()[User.getCustomerCnt() - 1].setGMI(gmi);
-        System.out.println("[UPDATE]: User GMI set to " + user.getCustomer()[User.getCustomerCnt() - 1].getGMI());
-        startupWindow.setLocationRelativeTo(null);
-        startupWindow.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        double gmi;
+        try {
+            gmi = Double.parseDouble(jTextField1.getText());
+            if (gmi < 0) {
+                JOptionPane.showMessageDialog(confirmGMI, "GMI cannot be negative.");
+            } else {
+                user.getCustomer()[User.getCustomerCnt() - 1].setGMI(gmi);
+                System.out.println("[UPDATE]: User GMI set to " + user.getCustomer()[User.getCustomerCnt() - 1].getGMI());
+                startupWindow.setLocationRelativeTo(null);
+                startupWindow.setVisible(true);
+                dispose();
+            }   
+        } catch (Exception e) {
+            System.out.println("[ERROR] Cannot set GMI.");
+        }
+    }//GEN-LAST:event_confirmGMIActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton confirmGMI;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -21,11 +21,12 @@ public class Startup extends javax.swing.JFrame {
     public Startup() {
         this.setLocationRelativeTo(null);
         initComponents();
-        realEstate.populateLots();
+        /*
         for (int i = 0; i < realEstate.getLot().length; i++) {
             System.out.println("-----------------");
             System.out.println(realEstate.getLot()[i].returnLotNumbers() + " - " + realEstate.getLot()[i].getSquareMeters() + " - $" + realEstate.getLot()[i].getTotalValue());
         }
+        */
     }
     
     public Startup(Admin admin, User user, RealEstate re) {
@@ -154,7 +155,7 @@ public class Startup extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Login loginWindow = new Login(user);
+        Login loginWindow = new Login(admin, user, realEstate);
         loginWindow.setLocationRelativeTo(null);
         loginWindow.setVisible(true);
         dispose();

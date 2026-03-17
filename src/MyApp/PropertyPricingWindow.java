@@ -5,6 +5,7 @@
 package MyApp;
 
 import MyLib.Admin;
+import MyLib.RealEstate;
 import MyLib.User;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
  * @author Predator
  */
 public class PropertyPricingWindow extends javax.swing.JFrame {
+    private RealEstate re;
     private User user;
     private Admin admin;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PropertyPricingWindow.class.getName());
@@ -21,8 +23,9 @@ public class PropertyPricingWindow extends javax.swing.JFrame {
     /**
      * Creates new form PropertyPricingWindow
      */
-    public PropertyPricingWindow(Admin admin, User user) {
+    public PropertyPricingWindow(Admin admin, User user, RealEstate re) {
         this.admin = admin;
+        this.re = re;
         this.user = user;
         initComponents();
     }
@@ -47,6 +50,7 @@ public class PropertyPricingWindow extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jTextField1.setToolTipText("");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
@@ -151,7 +155,7 @@ public class PropertyPricingWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ManageAgent manageAgentWindow = new ManageAgent(admin, user);
+        ManageAgent manageAgentWindow = new ManageAgent(admin, user, re);
         manageAgentWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

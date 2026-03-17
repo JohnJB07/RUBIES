@@ -30,11 +30,6 @@ public class Login extends javax.swing.JFrame {
         this.user = user;
         initComponents();
     }
-    
-    public Login(User user) {
-        this.user = user;
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -205,7 +200,7 @@ public class Login extends javax.swing.JFrame {
         
             Admin admin = new Admin();
             if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
-                ManageAgent agentWindow = new ManageAgent(admin, user);
+                ManageAgent agentWindow = new ManageAgent(admin, user, re);
                 agentWindow.setVisible(true);
                 dispose();       
             }

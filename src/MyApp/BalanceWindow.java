@@ -5,6 +5,7 @@
 package MyApp;
 import MyLib.Admin;
 import MyLib.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -109,11 +110,19 @@ public class BalanceWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        double balance = Double.parseDouble(balanceField.getText());
-        user.getCustomer()[User.getLoginIndx()].addBalance(balance);
-        System.out.println("[UPDATE]: Added balance - " + user.getCustomer()[User.getLoginIndx()].getBalance());
-        db.updateBalanceLabel();
-        dispose();
+        try {
+            double balance = Double.parseDouble(balanceField.getText());
+            if (balance < 0) {
+                JOptionPane.showMessageDialog(jButton2, "Balance cannot be negative.");
+            } else {
+                user.getCustomer()[User.getLoginIndx()].addBalance(balance);
+                System.out.println("[UPDATE]: Added balance - " + user.getCustomer()[User.getLoginIndx()].getBalance());
+                db.updateBalanceLabel();
+                dispose();
+            }
+        } catch(Exception e) {
+            System.out.println("[ERROR]: An error occured.");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,7 @@
  */
 package MyApp;
 import MyLib.Admin;
+import MyLib.RealEstate;
 import MyLib.User;
 
 /**
@@ -12,6 +13,7 @@ import MyLib.User;
  */
 public class ManageAgent extends javax.swing.JFrame {
     private Admin admin;
+    private RealEstate re;
     private User user;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageAgent.class.getName());
@@ -19,9 +21,10 @@ public class ManageAgent extends javax.swing.JFrame {
     /**
      * Creates new form manageAgent
      */
-    public ManageAgent(Admin admin, User user) {
+    public ManageAgent(Admin admin, User user, RealEstate re) {
         this.admin = admin;
         this.user = user;
+        this.re = re;
         initComponents();
     }
 
@@ -40,6 +43,7 @@ public class ManageAgent extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,14 +101,14 @@ public class ManageAgent extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup();
+        Startup startupWindow = new Startup(admin, user, re);
         startupWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        PropertyPricingWindow propertyPricingWindow = new PropertyPricingWindow(admin, user);
+        PropertyPricingWindow propertyPricingWindow = new PropertyPricingWindow(admin, user, re);
         propertyPricingWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
