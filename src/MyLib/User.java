@@ -16,6 +16,7 @@ public class User {
     private static int agentCnt = 0;
     private static int loginType;
     private static int loginIndx;
+    private static int lotIdx;
 
     public void register(int role, String username, String password) {
         switch (role) {
@@ -75,4 +76,14 @@ public class User {
     public static void setLoginIndx(int loginIndx) {
         User.loginIndx = loginIndx;
     }
+
+    public static int getLotIdx() {
+        return lotIdx;
+    }
+
+    public static void setLotIdx(int lotIdx) {
+        User.lotIdx = lotIdx;
+    }
+    
+    
 }

@@ -29,6 +29,7 @@ public class RealEstate implements ICalculate, ISearch {
     
     public void showReport() {
         
+        
     }
 
     // TODO: add features below

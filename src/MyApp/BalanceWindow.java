@@ -13,15 +13,17 @@ import MyLib.User;
 public class BalanceWindow extends javax.swing.JFrame {
     private User user;
     private Admin admin;
+    private Dashboard db;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BalanceWindow.class.getName());
 
     /**
      * Creates new form BalanceWindow
      */
-    public BalanceWindow(Admin admin, User user) {
+    public BalanceWindow(Admin admin, User user, Dashboard db) {
         this.user = user;
         this.admin = admin;
+        this.db = db;
         initComponents();
     }
 
@@ -102,9 +104,6 @@ public class BalanceWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Dashboard dashboard = new Dashboard(user);
-        dashboard.setLocationRelativeTo(null);
-        dashboard.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -113,6 +112,8 @@ public class BalanceWindow extends javax.swing.JFrame {
         double balance = Double.parseDouble(balanceField.getText());
         user.getCustomer()[User.getLoginIndx()].addBalance(balance);
         System.out.println("[UPDATE]: Added balance - " + user.getCustomer()[User.getLoginIndx()].getBalance());
+        db.updateBalanceLabel();
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
