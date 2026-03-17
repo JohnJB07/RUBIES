@@ -9,7 +9,7 @@ package MyLib;
  * @author Jayvee
  */
 public class User {
-    private Customer[] customer = new Customer[10];
+    private Customer[] customer = new Customer[1000];
     private Agent[] agent = new Agent[1000];
     private Admin admin = new Admin();
     private static int customerCnt = 0; // length and indexing GMI
@@ -21,14 +21,14 @@ public class User {
         switch (role) {
             case 1:
             {
-                System.out.println("[SUCCESS]: Created new user " + agentCnt + " : " + username + " - " + password);
+                System.out.println("[SUCCESS]: Created new AGENT " + (agentCnt + 1) + " : " + username + " - " + password);
                 agent[agentCnt] = new Agent("Agent", username, password);
                 agentCnt++;
                 break;
             }
             case 2:
             {
-                System.out.println("[SUCCESS]: Created new user " + customerCnt + " : " + username + " - " + password);
+                System.out.println("[SUCCESS]: Created new CUSTOMER " + (customerCnt + 1) + " : " + username + " - " + password);
                 customer[customerCnt] = new Customer("Customer", username, password);
                 customerCnt++;
                 break;

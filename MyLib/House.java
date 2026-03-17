@@ -15,6 +15,10 @@ class House {
     private boolean nearAmenities;
     
     public String checkRecent() {
-        return "";
+        if (years > 1) {
+            return "OLD";
+        } else {
+            return "NEW";
+        }
     }
 }

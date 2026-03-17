@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
+import MyLib.Admin;
 import MyLib.User;
 
 /**
@@ -10,6 +11,7 @@ import MyLib.User;
  * @author Jayvee
  */
 public class GMI extends javax.swing.JFrame {
+    private Admin admin;
     private User user;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GMI.class.getName());
 
@@ -18,6 +20,7 @@ public class GMI extends javax.swing.JFrame {
      * @param user
      */
     public GMI(User user) {
+        this.admin = admin;
         this.user = user;
         initComponents();
     }
@@ -114,7 +117,7 @@ public class GMI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(user);
+        Startup startupWindow = new Startup(admin, user);
         double gmi = Double.parseDouble(jTextField1.getText());
         user.getCustomer()[User.getCustomerCnt() - 1].setGMI(gmi);
         System.out.println("[UPDATE]: User GMI set to " + user.getCustomer()[User.getCustomerCnt() - 1].getGMI());

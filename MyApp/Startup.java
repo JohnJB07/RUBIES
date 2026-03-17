@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
+import MyLib.Admin;
 import MyLib.User;
 import java.util.HashSet;
 
@@ -12,6 +13,7 @@ import java.util.HashSet;
  */
 public class Startup extends javax.swing.JFrame {
     // Create new user
+    private Admin admin = new Admin();
     private User user = new User();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Startup.class.getName());
     
@@ -21,7 +23,8 @@ public class Startup extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Startup(User user) {
+    public Startup(Admin admin, User user) {
+        this.admin = admin;
         this.user = user;
         initComponents();
     }
