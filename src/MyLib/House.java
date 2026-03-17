@@ -8,11 +8,33 @@ package MyLib;
  *
  * @author Jayvee
  */
-class House {
+public class House {
     private String type;
     private int blockNumber;
     private int years;
     private boolean nearAmenities;
+    House(String type1, int blockNumber1, int years1, boolean nearAmenities1) {
+        this.type = type1;
+        this.blockNumber = blockNumber1;
+        this.years = years1;
+        this.nearAmenities = nearAmenities1;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getBlockNumber() {
+        return blockNumber;
+    }
+
+    public int getYears() {
+        return years;
+    }
+
+    public boolean isNearAmenities() {
+        return nearAmenities;
+    }
     
     public String checkRecent() {
         if (years > 1) {

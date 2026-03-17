@@ -4,6 +4,7 @@
  */
 package MyApp;
 import MyLib.Admin;
+import MyLib.RealEstate;
 import MyLib.User;
 import java.util.Set;
 import javax.swing.ButtonGroup;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Jayvee
  */
 public class Signup extends javax.swing.JFrame {
+    private RealEstate re;
     private Admin admin;
     private User user;
     private int userType = 0;
@@ -22,8 +24,9 @@ public class Signup extends javax.swing.JFrame {
     /**
      * Creates new form Signup
      */
-    public Signup(User user) {
+    public Signup(User user, RealEstate re) {
         this.user = user;
+        this.re = re;
         initComponents();
     }
 
@@ -157,7 +160,7 @@ public class Signup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(admin, user);
+        Startup startupWindow = new Startup(admin, user, re);
         startupWindow.setLocationRelativeTo(null);
         startupWindow.setVisible(true);
         dispose();
@@ -166,8 +169,8 @@ public class Signup extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(admin, user);
-        GMI gmiWindow = new GMI(user);
+        Startup startupWindow = new Startup(admin, user, re);
+        GMI gmiWindow = new GMI(user, re);
         String username = jTextField1.getText().toString(); // Username
         String password = jTextField2.getText().toString(); // Username
         String confirmPass = jTextField3.getText().toString(); // Username

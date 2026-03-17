@@ -4,6 +4,7 @@
  */
 package MyApp;
 import MyLib.Admin;
+import MyLib.RealEstate;
 import MyLib.User;
 
 /**
@@ -11,6 +12,7 @@ import MyLib.User;
  * @author Jayvee
  */
 public class GMI extends javax.swing.JFrame {
+    private RealEstate re;
     private Admin admin;
     private User user;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GMI.class.getName());
@@ -19,8 +21,9 @@ public class GMI extends javax.swing.JFrame {
      * Creates new form GMI
      * @param user
      */
-    public GMI(User user) {
+    public GMI(User user, RealEstate re) {
         this.admin = admin;
+        this.re = re;
         this.user = user;
         initComponents();
     }
@@ -117,7 +120,7 @@ public class GMI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(admin, user);
+        Startup startupWindow = new Startup(admin, user, re);
         double gmi = Double.parseDouble(jTextField1.getText());
         user.getCustomer()[User.getCustomerCnt() - 1].setGMI(gmi);
         System.out.println("[UPDATE]: User GMI set to " + user.getCustomer()[User.getCustomerCnt() - 1].getGMI());

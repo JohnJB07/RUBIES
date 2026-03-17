@@ -6,6 +6,7 @@ package MyApp;
 import MyLib.Admin;
 import MyLib.Agent;
 import MyLib.Customer;
+import MyLib.RealEstate;
 import MyLib.User;
 import javax.swing.JOptionPane;
 
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author Jayvee
  */
 public class Login extends javax.swing.JFrame {
+    private RealEstate re;
     private Admin admin;
     private User user;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
@@ -21,8 +23,9 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login(Admin admin, User user)
+    public Login(Admin admin, User user, RealEstate re)
     {
+        this.re = re;
         this.admin = admin;
         this.user = user;
         initComponents();
@@ -140,7 +143,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(admin, user);
+        Startup startupWindow = new Startup(admin, user, re);
         startupWindow.setLocationRelativeTo(null);
         startupWindow.setVisible(true);
         dispose();
@@ -164,7 +167,7 @@ public class Login extends javax.swing.JFrame {
                     System.out.println("[SUCCESS]: Logging in as " + currentAgent.getUsername());
                     User.setLoginType(1);
                     User.setLoginIndx(i);
-                    dashboard = new Dashboard(user);
+                    dashboard = new Dashboard(user, re);
                     dashboard.setLocationRelativeTo(null);
                     dashboard.setVisible(true);
                     dispose();
@@ -190,7 +193,7 @@ public class Login extends javax.swing.JFrame {
                         User.setLoginType(2);
                         User.setLoginIndx(i);
                         
-                        dashboard = new Dashboard(user);
+                        dashboard = new Dashboard(user, re);
                         dashboard.setLocationRelativeTo(null);
                         dashboard.setVisible(true);
                         dispose();

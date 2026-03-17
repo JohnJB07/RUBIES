@@ -4,15 +4,15 @@
  */
 package MyApp;
 import MyLib.Admin;
+import MyLib.RealEstate;
 import MyLib.User;
-import java.util.HashSet;
-
 /**
  *
  * @author Jayvee
  */
 public class Startup extends javax.swing.JFrame {
     // Create new user
+    private RealEstate realEstate = new RealEstate();
     private Admin admin = new Admin();
     private User user = new User();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Startup.class.getName());
@@ -21,10 +21,16 @@ public class Startup extends javax.swing.JFrame {
     public Startup() {
         this.setLocationRelativeTo(null);
         initComponents();
+        realEstate.populateLots();
+        for (int i = 0; i < realEstate.getLot().length; i++) {
+            System.out.println("-----------------");
+            System.out.println(realEstate.getLot()[i].returnLotNumbers() + " - " + realEstate.getLot()[i].getSquareMeters() + " - $" + realEstate.getLot()[i].getTotalValue());
+        }
     }
     
-    public Startup(Admin admin, User user) {
+    public Startup(Admin admin, User user, RealEstate re) {
         this.admin = admin;
+        this.realEstate = re;
         this.user = user;
         initComponents();
     }
@@ -157,7 +163,7 @@ public class Startup extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Signup signupWindow = new Signup(user);
+        Signup signupWindow = new Signup(user, realEstate);
         signupWindow.setLocationRelativeTo(null);
         signupWindow.setVisible(true);
         dispose();
