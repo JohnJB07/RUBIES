@@ -9,7 +9,7 @@ package MyLib;
  * @author Jayvee
  */
 public class User {
-    private Customer[] customer = new Customer[1000];
+    private Customer[] customer = new Customer[10];
     private Agent[] agent = new Agent[1000];
     private Admin admin = new Admin();
     private static int customerCnt = 0; // length and indexing GMI
@@ -41,5 +41,21 @@ public class User {
     
     public void logout() {
         
+    }
+
+    public Customer[] getCustomer() {
+        return customer;
+    }
+
+    public Agent[] getAgent() {
+        return agent;
+    }
+
+    public static int getCustomerCnt() {
+        return customerCnt;
+    }
+
+    public static int getAgentCnt() {
+        return agentCnt;
     }
 }

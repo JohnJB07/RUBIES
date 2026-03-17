@@ -4,6 +4,7 @@
  */
 package MyApp;
 import MyLib.User;
+import java.util.Set;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 /**
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
  * @author Jayvee
  */
 public class Signup extends javax.swing.JFrame {
+    private User user;
     private int userType = 0;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Signup.class.getName());
@@ -18,7 +20,8 @@ public class Signup extends javax.swing.JFrame {
     /**
      * Creates new form Signup
      */
-    public Signup() {
+    public Signup(User user) {
+        this.user = user;
         initComponents();
     }
 
@@ -44,6 +47,7 @@ public class Signup extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("Back");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -151,15 +155,16 @@ public class Signup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup();
+        Startup startupWindow = new Startup(user);
         startupWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup();
-        startupWindow.setResizable(false);
+        Startup startupWindow = new Startup(user);
+        GMI gmiWindow = new GMI(user);
         String username = jTextField1.getText().toString(); // Username
         String password = jTextField2.getText().toString(); // Username
         String confirmPass = jTextField3.getText().toString(); // Username
@@ -168,22 +173,22 @@ public class Signup extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jButton2, "Incomplete Input Field");
         } else {
             if (password.equals(confirmPass)) {
-                User user = new User();
                 // Create user based on role selected (customer or agent)
                 switch (userType) {
                     case 1: // Agent
                     {
-                        System.out.println("[UPDATE]: Selected agent");
                         user.register(1, username, password);
+                        startupWindow.setLocationRelativeTo(null);
                         startupWindow.setVisible(true);
                         dispose();
                         break;
                     }
                     case 2: // Customer
                     {
-                        System.out.println("[UPDATE]: Selected customer");
+                        
                         user.register(2, username, password);
-                        startupWindow.setVisible(true);
+                        gmiWindow.setLocationRelativeTo(null);
+                        gmiWindow.setVisible(true);
                         dispose();
                         break;
                     }
@@ -207,11 +212,13 @@ public class Signup extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getSource() == jRadioButton1) {
             if (evt.getStateChange() == 1) {
+                System.out.println("[UPDATE]: Selected agent");
                 userType = 1; // Agent
             }
         }
         if (evt.getSource() == jRadioButton2) {
             if (evt.getStateChange() == 1) {
+                System.out.println("[UPDATE]: Selected customer");
                 userType = 2; // Customer
             }
         }
@@ -223,27 +230,6 @@ public class Signup extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Signup().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

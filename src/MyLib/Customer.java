@@ -11,7 +11,7 @@ package MyLib;
 public class Customer extends Stakeholders {
     private double accountBalance;
     private double totalOwed;
-    private double GMI;
+    private double GMI = 0;
     
     public Customer(String role, String username, String password) {
         super(role, username, password);
@@ -27,5 +27,13 @@ public class Customer extends Stakeholders {
     
     public void addBalance(double amount) {
         
+    }
+
+    public double getGMI() {
+        return GMI;
+    }
+
+    public void setGMI(double GMI) {
+        this.GMI = GMI;
     }
 }

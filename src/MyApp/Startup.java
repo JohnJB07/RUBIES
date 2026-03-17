@@ -3,19 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
+import MyLib.User;
+import java.util.HashSet;
 
 /**
  *
  * @author Jayvee
  */
 public class Startup extends javax.swing.JFrame {
-    
+    // Create new user
+    private User user = new User();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Startup.class.getName());
-
-    /**
-     * Creates new form Startup
-     */
+    
+    // Constructor
     public Startup() {
+        this.setLocationRelativeTo(null);
+        initComponents();
+    }
+    
+    public Startup(User user) {
+        this.user = user;
         initComponents();
     }
 
@@ -34,6 +41,7 @@ public class Startup extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton3.setBackground(new java.awt.Color(255, 0, 51));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,7 +106,8 @@ public class Startup extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Login loginWindow = new Login();
+        Login loginWindow = new Login(user);
+        loginWindow.setLocationRelativeTo(null);
         loginWindow.setVisible(true);
         dispose();
         
@@ -106,7 +115,8 @@ public class Startup extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Signup signupWindow = new Signup();
+        Signup signupWindow = new Signup(user);
+        signupWindow.setLocationRelativeTo(null);
         signupWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -134,6 +144,7 @@ public class Startup extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Startup().setVisible(true));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
