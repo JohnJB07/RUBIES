@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
+import MyLib.Admin;
 import MyLib.User;
 import java.util.Set;
 import javax.swing.ButtonGroup;
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author Jayvee
  */
 public class Signup extends javax.swing.JFrame {
+    private Admin admin;
     private User user;
     private int userType = 0;
     
@@ -155,7 +157,7 @@ public class Signup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(user);
+        Startup startupWindow = new Startup(admin, user);
         startupWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -163,7 +165,7 @@ public class Signup extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(user);
+        Startup startupWindow = new Startup(admin, user);
         GMI gmiWindow = new GMI(user);
         String username = jTextField1.getText().toString(); // Username
         String password = jTextField2.getText().toString(); // Username

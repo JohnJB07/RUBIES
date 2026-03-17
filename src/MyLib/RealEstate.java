@@ -13,8 +13,13 @@ public class RealEstate implements ICalculate, ISearch {
     private double taxes;
     private Lot[] lot;
     
+    // Report
     public Lot[] showAllLots() {
-        Lot[] x = null;
+        Lot[] x = lot;
+        for (int i = 0; i < lot.length; i++) {
+            System.out.println("Lot");
+        }
+        
         return x;
     }
     

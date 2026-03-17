@@ -10,13 +10,13 @@ package MyLib;
  */
 class Lot {
     private House house;
-    private int lotNumbers;
+    private int lotNumber;
     private double squareMeters;
     private boolean isInner;
     private double totalValue;
     private boolean status;
     
-    public String returnBlockLotNumbers() {
-        return "";
+    public String returnLotNumbers() {
+        return "Lot " + lotNumber;
     }
 }

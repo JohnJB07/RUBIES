@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
+import MyLib.Admin;
 import MyLib.User;
 
 /**
@@ -10,6 +11,7 @@ import MyLib.User;
  * @author Jayvee
  */
 public class Dashboard extends javax.swing.JFrame {
+    private Admin admin;
     private User user;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashboard.class.getName());
@@ -34,7 +36,7 @@ public class Dashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         blk1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lot1 = new javax.swing.JPanel();
+        lot1Blk1 = new javax.swing.JPanel();
         lot2 = new javax.swing.JPanel();
         lot3 = new javax.swing.JPanel();
         lot4 = new javax.swing.JPanel();
@@ -61,7 +63,7 @@ public class Dashboard extends javax.swing.JFrame {
         welcomeMsg = new javax.swing.JLabel();
         blk2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        lot21 = new javax.swing.JPanel();
+        javax.swing.JPanel lot_1 = new javax.swing.JPanel();
         lot22 = new javax.swing.JPanel();
         lot23 = new javax.swing.JPanel();
         lot24 = new javax.swing.JPanel();
@@ -150,7 +152,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 650));
         setResizable(false);
 
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
@@ -163,30 +164,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel1.setText("BLOCK 1");
 
-        lot1.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot1MouseClicked(evt);
-            }
-        });
+        lot1Blk1.setPreferredSize(new java.awt.Dimension(32, 27));
 
-        javax.swing.GroupLayout lot1Layout = new javax.swing.GroupLayout(lot1);
-        lot1.setLayout(lot1Layout);
-        lot1Layout.setHorizontalGroup(
-            lot1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout lot1Blk1Layout = new javax.swing.GroupLayout(lot1Blk1);
+        lot1Blk1.setLayout(lot1Blk1Layout);
+        lot1Blk1Layout.setHorizontalGroup(
+            lot1Blk1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 45, Short.MAX_VALUE)
         );
-        lot1Layout.setVerticalGroup(
-            lot1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        lot1Blk1Layout.setVerticalGroup(
+            lot1Blk1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 45, Short.MAX_VALUE)
         );
 
         lot2.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot2MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot2Layout = new javax.swing.GroupLayout(lot2);
         lot2.setLayout(lot2Layout);
@@ -200,11 +191,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot3.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot3MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot3Layout = new javax.swing.GroupLayout(lot3);
         lot3.setLayout(lot3Layout);
@@ -218,11 +204,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot4.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot4MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot4Layout = new javax.swing.GroupLayout(lot4);
         lot4.setLayout(lot4Layout);
@@ -236,11 +217,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot5.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot5MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot5Layout = new javax.swing.GroupLayout(lot5);
         lot5.setLayout(lot5Layout);
@@ -254,11 +230,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot6.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot6MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot6Layout = new javax.swing.GroupLayout(lot6);
         lot6.setLayout(lot6Layout);
@@ -272,11 +243,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot7.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot7MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot7Layout = new javax.swing.GroupLayout(lot7);
         lot7.setLayout(lot7Layout);
@@ -290,11 +256,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot8.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot8MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot8Layout = new javax.swing.GroupLayout(lot8);
         lot8.setLayout(lot8Layout);
@@ -308,11 +269,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot9.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot9MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot9Layout = new javax.swing.GroupLayout(lot9);
         lot9.setLayout(lot9Layout);
@@ -326,11 +282,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot10.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot10MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot10Layout = new javax.swing.GroupLayout(lot10);
         lot10.setLayout(lot10Layout);
@@ -344,11 +295,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot11.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot11MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot11Layout = new javax.swing.GroupLayout(lot11);
         lot11.setLayout(lot11Layout);
@@ -362,11 +308,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot12.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot12MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot12Layout = new javax.swing.GroupLayout(lot12);
         lot12.setLayout(lot12Layout);
@@ -380,11 +321,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot13.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot13MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot13Layout = new javax.swing.GroupLayout(lot13);
         lot13.setLayout(lot13Layout);
@@ -398,11 +334,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot14.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot14MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot14Layout = new javax.swing.GroupLayout(lot14);
         lot14.setLayout(lot14Layout);
@@ -416,11 +347,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot15.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot15MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot15Layout = new javax.swing.GroupLayout(lot15);
         lot15.setLayout(lot15Layout);
@@ -434,11 +360,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot16.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot16MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot16Layout = new javax.swing.GroupLayout(lot16);
         lot16.setLayout(lot16Layout);
@@ -452,11 +373,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot17.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot17MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot17Layout = new javax.swing.GroupLayout(lot17);
         lot17.setLayout(lot17Layout);
@@ -470,11 +386,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot18.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot18MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot18Layout = new javax.swing.GroupLayout(lot18);
         lot18.setLayout(lot18Layout);
@@ -488,11 +399,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot19.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot19MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot19Layout = new javax.swing.GroupLayout(lot19);
         lot19.setLayout(lot19Layout);
@@ -506,11 +412,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot20.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot20MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot20Layout = new javax.swing.GroupLayout(lot20);
         lot20.setLayout(lot20Layout);
@@ -531,7 +432,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(lot1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lot1Blk1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lot2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -583,7 +484,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(blk1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lot2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lot1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lot1Blk1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lot4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lot3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lot6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -645,30 +546,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel2.setText("BLOCK 2");
 
-        lot21.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot21MouseClicked(evt);
-            }
-        });
+        lot_1.setPreferredSize(new java.awt.Dimension(32, 27));
 
-        javax.swing.GroupLayout lot21Layout = new javax.swing.GroupLayout(lot21);
-        lot21.setLayout(lot21Layout);
-        lot21Layout.setHorizontalGroup(
-            lot21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout lot_1Layout = new javax.swing.GroupLayout(lot_1);
+        lot_1.setLayout(lot_1Layout);
+        lot_1Layout.setHorizontalGroup(
+            lot_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 45, Short.MAX_VALUE)
         );
-        lot21Layout.setVerticalGroup(
-            lot21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        lot_1Layout.setVerticalGroup(
+            lot_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 45, Short.MAX_VALUE)
         );
 
         lot22.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot22MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot22Layout = new javax.swing.GroupLayout(lot22);
         lot22.setLayout(lot22Layout);
@@ -682,11 +573,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot23.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot23MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot23Layout = new javax.swing.GroupLayout(lot23);
         lot23.setLayout(lot23Layout);
@@ -700,11 +586,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot24.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot24MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot24Layout = new javax.swing.GroupLayout(lot24);
         lot24.setLayout(lot24Layout);
@@ -718,11 +599,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot25.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot25MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot25Layout = new javax.swing.GroupLayout(lot25);
         lot25.setLayout(lot25Layout);
@@ -736,11 +612,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot26.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot26MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot26Layout = new javax.swing.GroupLayout(lot26);
         lot26.setLayout(lot26Layout);
@@ -754,11 +625,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot27.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot27MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot27Layout = new javax.swing.GroupLayout(lot27);
         lot27.setLayout(lot27Layout);
@@ -772,11 +638,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot28.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot28MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot28Layout = new javax.swing.GroupLayout(lot28);
         lot28.setLayout(lot28Layout);
@@ -790,11 +651,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot29.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot29.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot29MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot29Layout = new javax.swing.GroupLayout(lot29);
         lot29.setLayout(lot29Layout);
@@ -808,11 +664,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot30.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot30.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot30MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot30Layout = new javax.swing.GroupLayout(lot30);
         lot30.setLayout(lot30Layout);
@@ -826,11 +677,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot31.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot31.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot31MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot31Layout = new javax.swing.GroupLayout(lot31);
         lot31.setLayout(lot31Layout);
@@ -844,11 +690,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot32.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot32.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot32MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot32Layout = new javax.swing.GroupLayout(lot32);
         lot32.setLayout(lot32Layout);
@@ -862,11 +703,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot33.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot33.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot33MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot33Layout = new javax.swing.GroupLayout(lot33);
         lot33.setLayout(lot33Layout);
@@ -880,11 +716,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot34.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot34.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot34MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot34Layout = new javax.swing.GroupLayout(lot34);
         lot34.setLayout(lot34Layout);
@@ -898,11 +729,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot35.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot35.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot35MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot35Layout = new javax.swing.GroupLayout(lot35);
         lot35.setLayout(lot35Layout);
@@ -916,11 +742,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot36.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot36.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot36MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot36Layout = new javax.swing.GroupLayout(lot36);
         lot36.setLayout(lot36Layout);
@@ -934,11 +755,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot37.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot37.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot37MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot37Layout = new javax.swing.GroupLayout(lot37);
         lot37.setLayout(lot37Layout);
@@ -952,11 +768,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot38.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot38.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot38MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot38Layout = new javax.swing.GroupLayout(lot38);
         lot38.setLayout(lot38Layout);
@@ -970,11 +781,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot39.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot39.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot39MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot39Layout = new javax.swing.GroupLayout(lot39);
         lot39.setLayout(lot39Layout);
@@ -988,11 +794,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot40.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot40.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot40MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot40Layout = new javax.swing.GroupLayout(lot40);
         lot40.setLayout(lot40Layout);
@@ -1013,7 +814,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(lot21, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lot_1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lot22, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1065,7 +866,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(blk2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lot22, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lot21, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lot_1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lot24, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lot23, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lot26, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1092,11 +893,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4.setText("BLOCK 3");
 
         lot41.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot41.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot41MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot41Layout = new javax.swing.GroupLayout(lot41);
         lot41.setLayout(lot41Layout);
@@ -1110,11 +906,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot42.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot42.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot42MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot42Layout = new javax.swing.GroupLayout(lot42);
         lot42.setLayout(lot42Layout);
@@ -1128,11 +919,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot43.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot43.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot43MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot43Layout = new javax.swing.GroupLayout(lot43);
         lot43.setLayout(lot43Layout);
@@ -1146,11 +932,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot44.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot44.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot44MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot44Layout = new javax.swing.GroupLayout(lot44);
         lot44.setLayout(lot44Layout);
@@ -1164,11 +945,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot45.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot45.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot45MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot45Layout = new javax.swing.GroupLayout(lot45);
         lot45.setLayout(lot45Layout);
@@ -1182,11 +958,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot46.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot46.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot46MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot46Layout = new javax.swing.GroupLayout(lot46);
         lot46.setLayout(lot46Layout);
@@ -1200,11 +971,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot47.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot47.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot47MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot47Layout = new javax.swing.GroupLayout(lot47);
         lot47.setLayout(lot47Layout);
@@ -1218,11 +984,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot48.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot48.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot48MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot48Layout = new javax.swing.GroupLayout(lot48);
         lot48.setLayout(lot48Layout);
@@ -1236,11 +997,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot49.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot49.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot49MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot49Layout = new javax.swing.GroupLayout(lot49);
         lot49.setLayout(lot49Layout);
@@ -1254,11 +1010,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot50.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot50.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot50MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot50Layout = new javax.swing.GroupLayout(lot50);
         lot50.setLayout(lot50Layout);
@@ -1272,11 +1023,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot51.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot51.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot51MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot51Layout = new javax.swing.GroupLayout(lot51);
         lot51.setLayout(lot51Layout);
@@ -1290,11 +1036,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot52.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot52.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot52MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot52Layout = new javax.swing.GroupLayout(lot52);
         lot52.setLayout(lot52Layout);
@@ -1308,11 +1049,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot53.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot53.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot53MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot53Layout = new javax.swing.GroupLayout(lot53);
         lot53.setLayout(lot53Layout);
@@ -1326,11 +1062,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot54.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot54.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot54MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot54Layout = new javax.swing.GroupLayout(lot54);
         lot54.setLayout(lot54Layout);
@@ -1344,11 +1075,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot55.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot55.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot55MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot55Layout = new javax.swing.GroupLayout(lot55);
         lot55.setLayout(lot55Layout);
@@ -1362,11 +1088,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot56.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot56.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot56MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot56Layout = new javax.swing.GroupLayout(lot56);
         lot56.setLayout(lot56Layout);
@@ -1380,11 +1101,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot57.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot57.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot57MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot57Layout = new javax.swing.GroupLayout(lot57);
         lot57.setLayout(lot57Layout);
@@ -1398,11 +1114,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot58.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot58.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot58MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot58Layout = new javax.swing.GroupLayout(lot58);
         lot58.setLayout(lot58Layout);
@@ -1416,11 +1127,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot59.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot59.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot59MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot59Layout = new javax.swing.GroupLayout(lot59);
         lot59.setLayout(lot59Layout);
@@ -1434,11 +1140,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot60.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot60.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot60MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot60Layout = new javax.swing.GroupLayout(lot60);
         lot60.setLayout(lot60Layout);
@@ -1538,11 +1239,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5.setText("BLOCK 4");
 
         lot61.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot61.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot61MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot61Layout = new javax.swing.GroupLayout(lot61);
         lot61.setLayout(lot61Layout);
@@ -1556,11 +1252,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot62.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot62.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot62MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot62Layout = new javax.swing.GroupLayout(lot62);
         lot62.setLayout(lot62Layout);
@@ -1574,11 +1265,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot63.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot63.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot63MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot63Layout = new javax.swing.GroupLayout(lot63);
         lot63.setLayout(lot63Layout);
@@ -1592,11 +1278,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot64.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot64.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot64MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot64Layout = new javax.swing.GroupLayout(lot64);
         lot64.setLayout(lot64Layout);
@@ -1610,11 +1291,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot65.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot65.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot65MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot65Layout = new javax.swing.GroupLayout(lot65);
         lot65.setLayout(lot65Layout);
@@ -1628,11 +1304,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot66.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot66.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot66MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot66Layout = new javax.swing.GroupLayout(lot66);
         lot66.setLayout(lot66Layout);
@@ -1646,11 +1317,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot67.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot67.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot67MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot67Layout = new javax.swing.GroupLayout(lot67);
         lot67.setLayout(lot67Layout);
@@ -1664,11 +1330,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot68.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot68.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot68MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot68Layout = new javax.swing.GroupLayout(lot68);
         lot68.setLayout(lot68Layout);
@@ -1682,11 +1343,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot69.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot69.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot69MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot69Layout = new javax.swing.GroupLayout(lot69);
         lot69.setLayout(lot69Layout);
@@ -1700,11 +1356,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot70.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot70.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot70MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot70Layout = new javax.swing.GroupLayout(lot70);
         lot70.setLayout(lot70Layout);
@@ -1718,11 +1369,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot71.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot71.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot71MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot71Layout = new javax.swing.GroupLayout(lot71);
         lot71.setLayout(lot71Layout);
@@ -1736,11 +1382,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot72.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot72.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot72MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot72Layout = new javax.swing.GroupLayout(lot72);
         lot72.setLayout(lot72Layout);
@@ -1754,11 +1395,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot73.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot73.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot73MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot73Layout = new javax.swing.GroupLayout(lot73);
         lot73.setLayout(lot73Layout);
@@ -1772,11 +1408,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot74.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot74.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot74MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot74Layout = new javax.swing.GroupLayout(lot74);
         lot74.setLayout(lot74Layout);
@@ -1790,11 +1421,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot75.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot75.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot75MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot75Layout = new javax.swing.GroupLayout(lot75);
         lot75.setLayout(lot75Layout);
@@ -1808,11 +1434,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot76.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot76.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot76MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot76Layout = new javax.swing.GroupLayout(lot76);
         lot76.setLayout(lot76Layout);
@@ -1826,11 +1447,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot77.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot77.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot77MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot77Layout = new javax.swing.GroupLayout(lot77);
         lot77.setLayout(lot77Layout);
@@ -1844,11 +1460,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot78.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot78.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot78MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot78Layout = new javax.swing.GroupLayout(lot78);
         lot78.setLayout(lot78Layout);
@@ -1862,11 +1473,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot79.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot79.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot79MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot79Layout = new javax.swing.GroupLayout(lot79);
         lot79.setLayout(lot79Layout);
@@ -1880,11 +1486,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot80.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot80.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot80MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot80Layout = new javax.swing.GroupLayout(lot80);
         lot80.setLayout(lot80Layout);
@@ -1984,11 +1585,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel6.setText("BLOCK 5");
 
         lot81.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot81.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot81MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot81Layout = new javax.swing.GroupLayout(lot81);
         lot81.setLayout(lot81Layout);
@@ -2002,11 +1598,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot82.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot82.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot82MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot82Layout = new javax.swing.GroupLayout(lot82);
         lot82.setLayout(lot82Layout);
@@ -2020,11 +1611,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot83.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot83.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot83MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot83Layout = new javax.swing.GroupLayout(lot83);
         lot83.setLayout(lot83Layout);
@@ -2038,11 +1624,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot84.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot84.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot84MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot84Layout = new javax.swing.GroupLayout(lot84);
         lot84.setLayout(lot84Layout);
@@ -2056,11 +1637,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot85.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot85.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot85MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot85Layout = new javax.swing.GroupLayout(lot85);
         lot85.setLayout(lot85Layout);
@@ -2074,11 +1650,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot86.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot86.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot86MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot86Layout = new javax.swing.GroupLayout(lot86);
         lot86.setLayout(lot86Layout);
@@ -2092,11 +1663,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot87.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot87.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot87MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot87Layout = new javax.swing.GroupLayout(lot87);
         lot87.setLayout(lot87Layout);
@@ -2110,11 +1676,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot88.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot88.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot88MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot88Layout = new javax.swing.GroupLayout(lot88);
         lot88.setLayout(lot88Layout);
@@ -2128,11 +1689,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot89.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot89.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot89MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot89Layout = new javax.swing.GroupLayout(lot89);
         lot89.setLayout(lot89Layout);
@@ -2146,11 +1702,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot90.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot90.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot90MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot90Layout = new javax.swing.GroupLayout(lot90);
         lot90.setLayout(lot90Layout);
@@ -2164,11 +1715,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot91.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot91.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot91MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot91Layout = new javax.swing.GroupLayout(lot91);
         lot91.setLayout(lot91Layout);
@@ -2182,11 +1728,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot92.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot92.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot92MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot92Layout = new javax.swing.GroupLayout(lot92);
         lot92.setLayout(lot92Layout);
@@ -2200,11 +1741,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot93.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot93.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot93MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot93Layout = new javax.swing.GroupLayout(lot93);
         lot93.setLayout(lot93Layout);
@@ -2218,11 +1754,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot94.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot94.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot94MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot94Layout = new javax.swing.GroupLayout(lot94);
         lot94.setLayout(lot94Layout);
@@ -2236,11 +1767,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot95.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot95.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot95MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot95Layout = new javax.swing.GroupLayout(lot95);
         lot95.setLayout(lot95Layout);
@@ -2254,11 +1780,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot96.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot96.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot96MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot96Layout = new javax.swing.GroupLayout(lot96);
         lot96.setLayout(lot96Layout);
@@ -2272,11 +1793,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot97.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot97.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot97MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot97Layout = new javax.swing.GroupLayout(lot97);
         lot97.setLayout(lot97Layout);
@@ -2290,11 +1806,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot98.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot98.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot98MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot98Layout = new javax.swing.GroupLayout(lot98);
         lot98.setLayout(lot98Layout);
@@ -2308,11 +1819,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot99.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot99.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot99MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot99Layout = new javax.swing.GroupLayout(lot99);
         lot99.setLayout(lot99Layout);
@@ -2326,11 +1832,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         lot100.setPreferredSize(new java.awt.Dimension(32, 27));
-        lot100.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lot100MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout lot100Layout = new javax.swing.GroupLayout(lot100);
         lot100.setLayout(lot100Layout);
@@ -2447,7 +1948,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addGap(411, 411, 411)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2479,7 +1980,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(blk4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(blk5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -2489,412 +1990,11 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup(user);
+        Startup startupWindow = new Startup(admin, user);
         startupWindow.setLocationRelativeTo(null);
         startupWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void lot1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot1MouseClicked
-        // TODO add your handling code here:
-        System.out.println("CLICKED THE OPANEL");
-    }//GEN-LAST:event_lot1MouseClicked
-
-    private void lot2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot2MouseClicked
-
-    private void lot3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot3MouseClicked
-
-    private void lot4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot4MouseClicked
-
-    private void lot5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot5MouseClicked
-
-    private void lot6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot6MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot6MouseClicked
-
-    private void lot7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot7MouseClicked
-
-    private void lot8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot8MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot8MouseClicked
-
-    private void lot9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot9MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot9MouseClicked
-
-    private void lot10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot10MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot10MouseClicked
-
-    private void lot11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot11MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot11MouseClicked
-
-    private void lot12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot12MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot12MouseClicked
-
-    private void lot13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot13MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot13MouseClicked
-
-    private void lot14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot14MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot14MouseClicked
-
-    private void lot15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot15MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot15MouseClicked
-
-    private void lot16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot16MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot16MouseClicked
-
-    private void lot17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot17MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot17MouseClicked
-
-    private void lot18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot18MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot18MouseClicked
-
-    private void lot19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot19MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot19MouseClicked
-
-    private void lot20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot20MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot20MouseClicked
-
-    private void lot21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot21MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot21MouseClicked
-
-    private void lot22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot22MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot22MouseClicked
-
-    private void lot23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot23MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot23MouseClicked
-
-    private void lot24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot24MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot24MouseClicked
-
-    private void lot25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot25MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot25MouseClicked
-
-    private void lot26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot26MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot26MouseClicked
-
-    private void lot27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot27MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot27MouseClicked
-
-    private void lot28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot28MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot28MouseClicked
-
-    private void lot29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot29MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot29MouseClicked
-
-    private void lot30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot30MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot30MouseClicked
-
-    private void lot31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot31MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot31MouseClicked
-
-    private void lot32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot32MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot32MouseClicked
-
-    private void lot33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot33MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot33MouseClicked
-
-    private void lot34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot34MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot34MouseClicked
-
-    private void lot35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot35MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot35MouseClicked
-
-    private void lot36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot36MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot36MouseClicked
-
-    private void lot37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot37MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot37MouseClicked
-
-    private void lot38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot38MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot38MouseClicked
-
-    private void lot39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot39MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot39MouseClicked
-
-    private void lot40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot40MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot40MouseClicked
-
-    private void lot41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot41MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot41MouseClicked
-
-    private void lot42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot42MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot42MouseClicked
-
-    private void lot43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot43MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot43MouseClicked
-
-    private void lot44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot44MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot44MouseClicked
-
-    private void lot45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot45MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot45MouseClicked
-
-    private void lot46MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot46MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot46MouseClicked
-
-    private void lot47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot47MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot47MouseClicked
-
-    private void lot48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot48MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot48MouseClicked
-
-    private void lot49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot49MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot49MouseClicked
-
-    private void lot50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot50MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot50MouseClicked
-
-    private void lot51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot51MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot51MouseClicked
-
-    private void lot52MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot52MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot52MouseClicked
-
-    private void lot53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot53MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot53MouseClicked
-
-    private void lot54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot54MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot54MouseClicked
-
-    private void lot55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot55MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot55MouseClicked
-
-    private void lot56MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot56MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot56MouseClicked
-
-    private void lot57MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot57MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot57MouseClicked
-
-    private void lot58MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot58MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot58MouseClicked
-
-    private void lot59MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot59MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot59MouseClicked
-
-    private void lot60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot60MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot60MouseClicked
-
-    private void lot61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot61MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot61MouseClicked
-
-    private void lot62MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot62MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot62MouseClicked
-
-    private void lot63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot63MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot63MouseClicked
-
-    private void lot64MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot64MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot64MouseClicked
-
-    private void lot65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot65MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot65MouseClicked
-
-    private void lot66MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot66MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot66MouseClicked
-
-    private void lot67MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot67MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot67MouseClicked
-
-    private void lot68MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot68MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot68MouseClicked
-
-    private void lot69MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot69MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot69MouseClicked
-
-    private void lot70MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot70MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot70MouseClicked
-
-    private void lot71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot71MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot71MouseClicked
-
-    private void lot72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot72MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot72MouseClicked
-
-    private void lot73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot73MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot73MouseClicked
-
-    private void lot74MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot74MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot74MouseClicked
-
-    private void lot75MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot75MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot75MouseClicked
-
-    private void lot76MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot76MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot76MouseClicked
-
-    private void lot77MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot77MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot77MouseClicked
-
-    private void lot78MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot78MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot78MouseClicked
-
-    private void lot79MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot79MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot79MouseClicked
-
-    private void lot80MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot80MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot80MouseClicked
-
-    private void lot81MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot81MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot81MouseClicked
-
-    private void lot82MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot82MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot82MouseClicked
-
-    private void lot83MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot83MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot83MouseClicked
-
-    private void lot84MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot84MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot84MouseClicked
-
-    private void lot85MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot85MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot85MouseClicked
-
-    private void lot86MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot86MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot86MouseClicked
-
-    private void lot87MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot87MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot87MouseClicked
-
-    private void lot88MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot88MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot88MouseClicked
-
-    private void lot89MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot89MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot89MouseClicked
-
-    private void lot90MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot90MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot90MouseClicked
-
-    private void lot91MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot91MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot91MouseClicked
-
-    private void lot92MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot92MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot92MouseClicked
-
-    private void lot93MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot93MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot93MouseClicked
-
-    private void lot94MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot94MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot94MouseClicked
-
-    private void lot95MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot95MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot95MouseClicked
-
-    private void lot96MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot96MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot96MouseClicked
-
-    private void lot97MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot97MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot97MouseClicked
-
-    private void lot98MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot98MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot98MouseClicked
-
-    private void lot99MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot99MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot99MouseClicked
-
-    private void lot100MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lot100MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lot100MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2914,7 +2014,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel lot1;
     private javax.swing.JPanel lot10;
     private javax.swing.JPanel lot100;
     private javax.swing.JPanel lot11;
@@ -2926,9 +2025,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel lot17;
     private javax.swing.JPanel lot18;
     private javax.swing.JPanel lot19;
+    private javax.swing.JPanel lot1Blk1;
     private javax.swing.JPanel lot2;
     private javax.swing.JPanel lot20;
-    private javax.swing.JPanel lot21;
     private javax.swing.JPanel lot22;
     private javax.swing.JPanel lot23;
     private javax.swing.JPanel lot24;
