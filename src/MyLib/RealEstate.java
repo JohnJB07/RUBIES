@@ -24,7 +24,6 @@ public class RealEstate implements ICalculate, ISearch {
         for (int i = 0; i < lot.length; i++) {
             System.out.println("Lot");
         }
-        
         return x;
     }
     

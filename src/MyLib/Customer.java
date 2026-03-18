@@ -17,12 +17,23 @@ public class Customer extends Stakeholders {
         super(role, username, password);
     }
     
-    public void buyProperty(Lot lot) {
+    public int buyProperty(Lot lot) {
         if (lot.getTotalValue() > accountBalance) {
             System.out.println("[CHECK]: Could not buy property, Insufficient Balance");
+            return -1;
         } else {
             accountBalance -= lot.getTotalValue();
+            System.out.println("[UPDATE]: Balance is now " + accountBalance);
+            return 0;
         }
+    }
+    
+    public void reserveLot() {
+        totalOwed += 10000;
+    }
+    
+    public void addTotalOwed(double amt) {
+        totalOwed += amt;
     }
     
     public void payTotalOwed() {
@@ -56,5 +67,9 @@ public class Customer extends Stakeholders {
 
     public void setGMI(double GMI) {
         this.GMI = GMI;
+    }
+
+    public double getTotalOwed() {
+        return totalOwed;
     }
 }

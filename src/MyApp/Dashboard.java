@@ -37,6 +37,7 @@ public class Dashboard extends javax.swing.JFrame {
                 String loginMsgCustomer = user.getCustomer()[User.getLoginIndx()].getUsername();
                 welcomeMsg.setText("Welcome " +  user.getCustomer()[User.getLoginIndx()].getRole() + " " + loginMsgCustomer);
                 balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
+                balance1.setText("Total Owed: " + user.getCustomer()[User.getLoginIndx()].getTotalOwed());
                 balance2.setText(user.getCustomer()[User.getLoginIndx()].gmiString());
                 
                 break;
@@ -198,6 +199,7 @@ public class Dashboard extends javax.swing.JFrame {
         welcomeMsg = new javax.swing.JLabel();
         balance1 = new javax.swing.JLabel();
         balance2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -1162,6 +1164,11 @@ public class Dashboard extends javax.swing.JFrame {
         balance2.setForeground(java.awt.Color.white);
         balance2.setText("Gross Monthly Income:");
 
+        jButton3.setBackground(new java.awt.Color(255, 0, 51));
+        jButton3.setForeground(java.awt.Color.white);
+        jButton3.setText("FILTER");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1171,15 +1178,18 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(balance1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(balance1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3))
                             .addComponent(balance2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)))
-                        .addGap(68, 68, 68)
+                        .addGap(99, 99, 99)
                         .addComponent(welcomeMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(465, 465, 465))
+                        .addGap(431, 431, 431))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -1188,7 +1198,7 @@ public class Dashboard extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(jButton1)
-                                .addGap(236, 236, 236)
+                                .addGap(330, 330, 330)
                                 .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -1203,10 +1213,12 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(balance)
                             .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(balance1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(balance1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(balance2))
-                    .addComponent(welcomeMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1237,14 +1249,39 @@ public class Dashboard extends javax.swing.JFrame {
     private void lot1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lot1ActionPerformed
         // TODO add your handling code here:
         Lot lot = realEstate.showReport(evt.getActionCommand());
-        RealEstateWindow rew = new RealEstateWindow(user, lot, realEstate);
+        User.setLotIdx(Integer.parseInt(evt.getActionCommand()));
+        RealEstateWindow rew = new RealEstateWindow(user, lot, realEstate, this);
         System.out.println("[UPDATE]: CLICKED LOT: " + evt.getActionCommand());
         rew.setLocationRelativeTo(null);
         rew.setVisible(true);
     }//GEN-LAST:event_lot1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public void updateBalanceLabel() {
         balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
+    }
+    
+    public void updateTotalOwed() {
+        balance1.setText("Total owed: " + String.valueOf(user.getCustomer()[User.getLoginIndx()].getTotalOwed()));
+    }
+    
+    public void reserveTheLot() {
+        user.getCustomer()[User.getLoginIndx()].reserveLot();
+        balance1.setText("Total owed: " + String.valueOf(user.getCustomer()[User.getLoginIndx()].getTotalOwed()));
+    }
+    
+    public int buyTheProperty(Lot lot) {
+        int result = user.getCustomer()[User.getLoginIndx()].buyProperty(lot);
+        switch (result) {
+            case -1:
+                return -1;
+            case 0:
+                return 0;
+        }
+        return 1;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1259,6 +1296,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -14,6 +14,7 @@ public class Lot {
     private double squareMeters;
     private boolean isInner;
     private double totalValue;
+    private static int userLoginIndex = -1;
     private String status;
     
     public Lot(House house1, int lotNumber1, double squareMeters1, boolean inner, double totalValue1, String status) {
@@ -53,6 +54,16 @@ public class Lot {
     public String getStatus() {
         return status;
     }
-    
-    
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public static int getUserLoginIndex() {
+        return userLoginIndex;
+    }
+
+    public static void setUserLoginIndex(int userLoginIndex) {
+        Lot.userLoginIndex = userLoginIndex;
+    }
 }
