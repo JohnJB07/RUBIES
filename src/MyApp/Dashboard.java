@@ -33,6 +33,9 @@ public class Dashboard extends javax.swing.JFrame {
             case 1:
                 String loginMsgAgent = user.getAgent()[User.getLoginIndx()].getUsername();
                 welcomeMsg.setText("Welcome " + user.getAgent()[User.getLoginIndx()].getRole() + " " + loginMsgAgent);
+                
+                jButton5.setVisible(true);
+                
                 break;
             case 2:
                 String loginMsgCustomer = user.getCustomer()[User.getLoginIndx()].getUsername();
@@ -40,6 +43,8 @@ public class Dashboard extends javax.swing.JFrame {
                 balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
                 balance1.setText("Total Owed: " + user.getCustomer()[User.getLoginIndx()].getTotalOwed());
                 balance2.setText(user.getCustomer()[User.getLoginIndx()].gmiString());
+                
+                jButton5.setVisible(false);
                 
                 break;
             default:
@@ -202,6 +207,7 @@ public class Dashboard extends javax.swing.JFrame {
         balance2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -1184,6 +1190,12 @@ public class Dashboard extends javax.swing.JFrame {
         jButton4.setText("Show Lot Report");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
+        jButton5.setBackground(new java.awt.Color(255, 0, 51));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Go to Availability");
+        jButton5.addActionListener(this::jButton5ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1205,7 +1217,9 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(jButton3)))))
                 .addGap(102, 102, 102)
                 .addComponent(welcomeMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(480, 480, 480))
+                .addGap(94, 94, 94)
+                .addComponent(jButton5)
+                .addGap(262, 262, 262))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -1223,9 +1237,6 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -1240,7 +1251,12 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(jButton4)
                                 .addGap(6, 6, 6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(balance2)))
+                        .addComponent(balance2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(9, 9, 9)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1291,6 +1307,14 @@ public class Dashboard extends javax.swing.JFrame {
         lotReport.setLocationRelativeTo(null);
         lotReport.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        AgentAvailabilityWindow availabilityWindow = new AgentAvailabilityWindow(user, realEstate);
+        availabilityWindow.setLocationRelativeTo(null);
+        availabilityWindow.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public void updateBalanceLabel() {
         balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
@@ -1367,6 +1391,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

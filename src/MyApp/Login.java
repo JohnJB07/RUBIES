@@ -182,10 +182,17 @@ public class Login extends javax.swing.JFrame {
                 jLabel4.setText("Account does not exist");
                 break;
             case 0: // Go to dashboard
-                Dashboard dashboard = new Dashboard(user, re);
-                dashboard.setLocationRelativeTo(null);
-                dashboard.setVisible(true);
-                dispose();
+                if (User.getLoginType() == 1) {
+                    AgentAvailabilityWindow availabilityWindow = new AgentAvailabilityWindow(user, re);
+                    availabilityWindow.setLocationRelativeTo(null);
+                    availabilityWindow.setVisible(true);
+                    dispose();
+                } else if (User.getLoginType() == 2) {
+                    Dashboard dashboard = new Dashboard(user, re);
+                    dashboard.setLocationRelativeTo(null);
+                    dashboard.setVisible(true);
+                    dispose();
+                }
                 break;
             case 1: // Admin login
                 Directory directoryWindow = new Directory(admin, user, re);
