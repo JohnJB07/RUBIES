@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
 
@@ -12,18 +12,21 @@ import MyLib.User;
  *
  * @author Predator
  */
-public class Directory extends javax.swing.JPanel {
-        private Admin admin;
-        private User user;
-        private RealEstate re;
+public class Directory extends javax.swing.JFrame {
+    private Admin admin;
+    private User user;
+    private RealEstate re;
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Directory.class.getName());
+
     /**
      * Creates new form Directory
      */
     public Directory(Admin admin, User user, RealEstate re) {
-        this.admin = admin;
-        this.user = user;
-        this.re = re;
-        initComponents();
+    this.admin = admin;
+    this.user = user;
+    this.re = re;
+    initComponents();
+    getContentPane().setBackground(java.awt.Color.BLACK);
     }
 
     /**
@@ -39,6 +42,8 @@ public class Directory extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jButton3.setBackground(new java.awt.Color(255, 0, 51));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("EXIT");
@@ -50,8 +55,8 @@ public class Directory extends javax.swing.JPanel {
         jButton5.setText("EDIT LOT DETAILS");
         jButton5.addActionListener(this::jButton5ActionPerformed);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -73,14 +78,16 @@ public class Directory extends javax.swing.JPanel {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup();
+        Startup startupWindow = new Startup(admin, user, re);
         startupWindow.setLocationRelativeTo(null);
         startupWindow.setVisible(true);
-        javax.swing.SwingUtilities.getWindowAncestor(this).dispose();
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -88,26 +95,20 @@ public class Directory extends javax.swing.JPanel {
         ManageAgent agentWindow = new ManageAgent(admin, user, re);
         agentWindow.setLocationRelativeTo(null);
         agentWindow.setVisible(true);
-        javax.swing.SwingUtilities.getWindowAncestor(this).dispose();
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         EditLotDetails lotWindow = new EditLotDetails(admin, user, re);
-        javax.swing.JFrame frame = new javax.swing.JFrame("Edit Lot Details");
-        frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-        frame.setContentPane(lotWindow);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        javax.swing.SwingUtilities.getWindowAncestor(this).dispose();                                        
+        lotWindow.setLocationRelativeTo(null);
+        lotWindow.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
-
 }

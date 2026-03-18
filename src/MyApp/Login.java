@@ -188,13 +188,9 @@ public class Login extends javax.swing.JFrame {
                 dispose();
                 break;
             case 1: // Admin login
-                Directory directoryPanel = new Directory(admin, user, re);
-                javax.swing.JFrame frame = new javax.swing.JFrame("Directory");
-                frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-                frame.setContentPane(directoryPanel);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                Directory directoryWindow = new Directory(admin, user, re);
+                directoryWindow.setLocationRelativeTo(null);
+                directoryWindow.setVisible(true);
                 dispose();
                 break;
             case 2:

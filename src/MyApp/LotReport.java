@@ -33,7 +33,7 @@ public class LotReport extends javax.swing.JFrame {
     }
     
     public void updateTable(boolean[] visibilityMap) {
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("#,##0.00");
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
         // 1. Clear the table completely
