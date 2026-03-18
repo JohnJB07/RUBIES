@@ -121,8 +121,4 @@ public class RealEstate implements ICalculate, ISearch {
     public Lot[] getLot() {
         return lot;
     }
-
-    public void setLot(Lot[] lot) {
-        this.lot = lot;
-    }
 }

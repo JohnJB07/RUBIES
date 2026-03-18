@@ -4,8 +4,6 @@
  */
 package MyLib;
 
-import MyApp.Startup;
-
 /**
  *
  * @author Jayvee
@@ -20,22 +18,43 @@ public class User {
     private static int loginIndx;
     private static int lotIdx;
 
-    public void register(int role, String username, String password) {
-        switch (role) {
-            case 1:
-            {
-                System.out.println("[SUCCESS]: Created new AGENT " + (agentCnt + 1) + " : " + username + " - " + password);
-                agent[agentCnt] = new Agent("Agent", username, password);
-                agentCnt++;
-                break;
+    public int register(int userType, String username, String password, String confirmPass) {
+        // No input from user
+        if (username.equals("") || password.equals("") || confirmPass.equals("")) {
+            return -1;
+        }
+        
+        for (int i = 0; i < agentCnt; i++) {
+            if (username.equals(agent[i].getUsername())) {
+                return 1;
             }
-            case 2:
-            {
-                System.out.println("[SUCCESS]: Created new CUSTOMER " + (customerCnt + 1) + " : " + username + " - " + password);
-                customer[customerCnt] = new Customer("Customer", username, password);
-                customerCnt++;
-                break;
+        }
+        
+        // Check customers
+        for (int i = 0; i < customerCnt; i++) {
+            if (username.equals(customer[i].getUsername())) {
+                return 1;
             }
+        }
+        
+        if (password.equals(confirmPass)) {
+            switch(userType) {
+                case 1:
+                    System.out.println("[SUCCESS]: Created new AGENT " + (agentCnt + 1) + " : " + username + " - " + password);
+                    agent[agentCnt] = new Agent("Agent", username, password);
+                    agentCnt++;
+                    return 2; // Agent
+                case 2:
+                    System.out.println("[SUCCESS]: Created new CUSTOMER " + (customerCnt + 1) + " : " + username + " - " + password);
+                    customer[customerCnt] = new Customer("Customer", username, password);
+                    customerCnt++;
+                    return 3; // Customer
+                default:
+                    System.out.println("[ERROR]: No role selected");
+                    return -2;                  
+            }
+        } else {
+            return -3;
         }
     }
     
