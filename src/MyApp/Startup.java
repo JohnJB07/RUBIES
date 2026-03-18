@@ -19,9 +19,9 @@ public class Startup extends javax.swing.JFrame {
     
     // Constructor
     public Startup() {
-        this.setLocationRelativeTo(null);
         getContentPane().setBackground(java.awt.Color.BLACK);
         initComponents();
+        this.setLocationRelativeTo(null);
         // CHECK LOT POPULATION DATA
         /*
         for (int i = 0; i < realEstate.getLot().length; i++) {
