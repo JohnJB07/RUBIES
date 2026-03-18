@@ -45,7 +45,13 @@ public class RealEstateWindow extends javax.swing.JFrame {
         if (Lot.getUserLoginIndex() == -1) {
             jTextField6.setText(lot.getStatus());
         } else {
-            jTextField6.setText(lot.getStatus() + " by " + user.getCustomer()[Lot.getUserLoginIndex()].getUsername());
+            if (lot.getStatus() == "Sold") {
+                jTextField6.setText(lot.getStatus() + " to " + user.getCustomer()[Lot.getUserLoginIndex()].getUsername());
+            } else if (lot.getStatus() == "Reserved") {
+                jTextField6.setText(lot.getStatus() + " by " + user.getCustomer()[Lot.getUserLoginIndex()].getUsername());
+            } else if (lot.getStatus() == "Available") {
+                jTextField6.setText(lot.getStatus());
+            }
         }
     }
 
@@ -268,10 +274,13 @@ public class RealEstateWindow extends javax.swing.JFrame {
         System.out.println("[UPDATE]: Confirming Dialog");
         if (JOptionPane.showConfirmDialog(jButton2, "Would you like to reserve lot?", 
                 "Notice", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            if (lot.getStatus() == "Reserved" || lot.getStatus() == "Sold") {
-                System.out.println("[NOTICE]: Lot cannot be reserved or bought");
-                JOptionPane.showMessageDialog(jButton2, "Lot is not available.");
-            } else {
+            if (lot.getStatus() == "Sold") {
+                System.out.println("[NOTICE]: Lot cannot be reserved as it is bought");
+                JOptionPane.showMessageDialog(jButton2, "Lot is not available to be reserved.");
+            } else if (lot.getStatus() == "Reserved") {
+                System.out.println("[NOTICE]: Lot cannot be reserved as it is reserved already.");
+                JOptionPane.showMessageDialog(jButton2, "Lot is not available to be reserved.");
+            } else if (lot.getStatus() == "Available") {
                 lot.setStatus("Reserved");
                 Lot.setUserLoginIndex(User.getLoginIndx());
                 jTextField6.setText(lot.getStatus() + " by " + user.getCustomer()[Lot.getUserLoginIndex()].getUsername());
@@ -285,37 +294,27 @@ public class RealEstateWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("[UPDATE]: Confirming Dialog");
-        if (JOptionPane.showConfirmDialog(jButton2, "Would you like to buy the lot?", 
-                "Notice", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            if (lot.getStatus() == "Reserved" || lot.getStatus() == "Sold") {
-                System.out.println("[NOTICE]: Lot cannot be reserved or bought");
-                JOptionPane.showMessageDialog(jButton2, "Lot is not available.");
-            } else {
-                int result = dashboard.buyTheProperty(lot);
-                if (lot.getStatus() != "Sold") {
-                    switch (result) {
-                        case -1:
-                            JOptionPane.showMessageDialog(jButton2, "Lot is not available.");
-                            break;
-                        case 0:
-                            lot.setStatus("Sold");
-                            jTextField6.setText(lot.getStatus());
-                            System.out.println("[UPDATE]: Bought lot");
-                            JOptionPane.showMessageDialog(jButton2, "Bought the lot.");
-                            break;
-                        default:
-                            System.out.println("[ERROR]: Unexpected behaviour occured.");
-                            break;
-                    }
-                    
+        BuyWindow bw = new BuyWindow(user, lot, dashboard);
+        switch (lot.getStatus()) {
+            case "Available":
+                System.out.println("[UPDATE]: Buy Window Opened: ");
+                bw.setLocationRelativeTo(null);
+                bw.setVisible(true);
+                dispose();
+                break;
+            case "Reserved":
+                if (User.getLoginIndx() == Lot.getUserLoginIndex()) {
+                    System.out.println("[UPDATE]: Buy Window Opened: ");
+                    bw.setLocationRelativeTo(null);
+                    bw.setVisible(true);
+                    dispose();
                 }
-            }
-        } else {
-            System.out.println("[UPDATE]: Did not reserve lot");
+                break;
+            default:
+                System.out.println("[UPDATE]: Reserved lot");
+                JOptionPane.showMessageDialog(jButton1, "Lot cannot be bought.");
+                break;
         }
-        dashboard.updateBalanceLabel();
-        dashboard.updateTotalOwed();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,7 +16,7 @@ public class Lot {
     private double totalValue; // Price of lot
     private static int userLoginIndex = -1;
     private double reservationFee = 10_000;
-    private double downpaymentFee = 0;
+    private double downpaymentFee = 20000;
     private String status;
     
     public Lot(House house1, int lotNumber1, double squareMeters1, boolean inner, double totalValue1, String status) {

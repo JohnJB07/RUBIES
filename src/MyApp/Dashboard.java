@@ -7,6 +7,7 @@ import MyLib.Admin;
 import MyLib.Lot;
 import MyLib.RealEstate;
 import MyLib.User;
+import java.text.DecimalFormat;
 import javax.swing.ButtonGroup;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.ButtonGroup;
  * @author Jayvee
  */
 public class Dashboard extends javax.swing.JFrame {
+    private DecimalFormat df = new DecimalFormat("#,##0.00");
     private RealEstate realEstate;
     private Admin admin;
     private User user;
@@ -39,10 +41,13 @@ public class Dashboard extends javax.swing.JFrame {
                 break;
             case 2:
                 String loginMsgCustomer = user.getCustomer()[User.getLoginIndx()].getUsername();
+                double totalOwed = user.getCustomer()[User.getLoginIndx()].getTotalOwed();
+                double gmi = user.getCustomer()[User.getLoginIndx()].getGMI();
+                double daBalance = user.getCustomer()[User.getLoginIndx()].getBalance();
                 welcomeMsg.setText("Welcome " +  user.getCustomer()[User.getLoginIndx()].getRole() + " " + loginMsgCustomer);
-                balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
-                balance1.setText("Total Owed: " + user.getCustomer()[User.getLoginIndx()].getTotalOwed());
-                balance2.setText(user.getCustomer()[User.getLoginIndx()].gmiString());
+                balance.setText("Balance: ₱" + df.format(daBalance));
+                balance1.setText("Total Owed: ₱" + df.format(totalOwed));
+                balance2.setText("Gross Monthly Income: ₱" + df.format(gmi));
                 
                 jButton5.setVisible(false);
                 
@@ -1317,16 +1322,19 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     public void updateBalanceLabel() {
-        balance.setText(user.getCustomer()[User.getLoginIndx()].balanceString());
+        double currBalance = user.getCustomer()[User.getLoginIndx()].getBalance();
+        balance.setText("Balance: ₱" + df.format(currBalance));
     }
     
     public void updateTotalOwed() {
-        balance1.setText("Total owed: " + String.valueOf(user.getCustomer()[User.getLoginIndx()].getTotalOwed()));
+        double totalOwed = user.getCustomer()[User.getLoginIndx()].getTotalOwed();
+        balance1.setText("Total owed: ₱" + df.format(totalOwed));
     }
     
     public void reserveTheLot() {
         user.getCustomer()[User.getLoginIndx()].reserveLot();
-        balance1.setText("Total owed: " + String.valueOf(user.getCustomer()[User.getLoginIndx()].getTotalOwed()));
+        double totalOwed = user.getCustomer()[User.getLoginIndx()].getTotalOwed();
+        balance1.setText("Total owed: ₱" + df.format(totalOwed));
     }
     
     public void updateVisibility(boolean[] visibilityMap) {
