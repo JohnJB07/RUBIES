@@ -4,30 +4,32 @@
  */
 package MyApp;
 import MyLib.Lot;
+import MyLib.RealEstate;
 import MyLib.User;
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jayvee
  */
 public class RealEstateWindow extends javax.swing.JFrame {
+    private RealEstate re;
     private User user;
     private Lot lot;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RealEstateWindow.class.getName());
     
-
     /**
      * Creates new form RealEstateWindow
      */
-    public RealEstateWindow(User user, Lot lot) {
+    public RealEstateWindow(User user, Lot lot, RealEstate re) {
+        this.re = re;
         this.user = user;
         this.lot = lot;
         getContentPane().setBackground(java.awt.Color.BLACK);
         initComponents();
         
         DecimalFormat df = new DecimalFormat("#.00");
-        
         
         jLabel8.setText(String.valueOf(lot.getHouse().getBlockNumber()));
         jLabel9.setText(String.valueOf(lot.getLotNumber()));
@@ -39,7 +41,6 @@ public class RealEstateWindow extends javax.swing.JFrame {
         jTextField4.setText(String.valueOf(lot.getHouse().isNearAmenities()));
         jTextField5.setText(String.valueOf(lot.isIsInner()));
         jTextField6.setText(lot.getStatus());
-        
     }
 
     /**
@@ -197,11 +198,12 @@ public class RealEstateWindow extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel11)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -250,7 +252,14 @@ public class RealEstateWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.out.println("[UPDATE]: Reserved lot");
+        System.out.println("[UPDATE]: Confirming Dialog");
+        if (JOptionPane.showConfirmDialog(jButton2, "Would you like to reserve lot?", 
+                "Notice", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.out.println("[UPDATE]: Reserved lot");
+            
+        } else {
+            System.out.println("[UPDATE]: Did not reserve lot");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

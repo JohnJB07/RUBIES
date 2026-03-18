@@ -13,7 +13,8 @@ public class House {
     private int blockNumber;
     private int years;
     private boolean nearAmenities;
-    House(String type1, int blockNumber1, int years1, boolean nearAmenities1) {
+    
+    public House(String type1, int blockNumber1, int years1, boolean nearAmenities1) {
         this.type = type1;
         this.blockNumber = blockNumber1;
         this.years = years1;

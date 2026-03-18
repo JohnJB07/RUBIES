@@ -1237,7 +1237,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void lot1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lot1ActionPerformed
         // TODO add your handling code here:
         Lot lot = realEstate.showReport(evt.getActionCommand());
-        RealEstateWindow rew = new RealEstateWindow(user, lot);
+        RealEstateWindow rew = new RealEstateWindow(user, lot, realEstate);
         System.out.println("[UPDATE]: CLICKED LOT: " + evt.getActionCommand());
         rew.setLocationRelativeTo(null);
         rew.setVisible(true);
