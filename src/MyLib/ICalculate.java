@@ -9,5 +9,7 @@ package MyLib;
  * @author Jayvee
  */
 public interface ICalculate {
-    double calculateTotalPrice(double a, double sqmeters);
+    public double calculateGMI(String a, double b);
+    public double calculateAmortization(double a);
+    public double calculateTotalPrice(double a, double sqmeters);
 }

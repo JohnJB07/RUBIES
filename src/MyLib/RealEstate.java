@@ -10,10 +10,25 @@ import java.util.Random;
  * @author Jayvee
  */
 public class RealEstate implements ICalculate, ISearch {
+    private double price;
+    private double taxes;
     private Lot[] lot = new Lot[100];
     
     public RealEstate() {
         this.populateLots();
+    }
+    
+    // Report
+    public Lot[] showAllLots() {
+        Lot[] x = lot;
+        for (int i = 0; i < lot.length; i++) {
+            System.out.println("Lot");
+        }
+        return x;
+    }
+    
+    public double reserveLot() {
+        return 1;
     }
     
     public Lot showReport(String buttonId) {
@@ -71,6 +86,17 @@ public class RealEstate implements ICalculate, ISearch {
             Lot lots = new Lot(house, lotNumber, squareMeters, isInner, totalValue, status);
             lot[i - 1] = lots;
         }
+    }
+
+    // TODO: add features below
+    @Override
+    public double calculateGMI(String a, double b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public double calculateAmortization(double a) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public double calculateTotalPrice(double a, double squareMeters) {

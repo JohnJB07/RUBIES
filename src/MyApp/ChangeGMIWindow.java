@@ -11,17 +11,17 @@ import javax.swing.JOptionPane;
  *
  * @author Jayvee
  */
-public class BalanceWindow extends javax.swing.JFrame {
+public class ChangeGMIWindow extends javax.swing.JFrame {
     private User user;
     private Admin admin;
     private Dashboard db;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BalanceWindow.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ChangeGMIWindow.class.getName());
 
     /**
      * Creates new form BalanceWindow
      */
-    public BalanceWindow(Admin admin, User user, Dashboard db) {
+    public ChangeGMIWindow(Admin admin, User user, Dashboard db) {
         this.user = user;
         this.admin = admin;
         this.db = db;
@@ -56,11 +56,11 @@ public class BalanceWindow extends javax.swing.JFrame {
         jButton1.setText("Back");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jButton2.setText("Add Balance");
+        jButton2.setText("Change");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("BALANCE");
+        jLabel1.setText("Change GMI");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,11 +76,11 @@ public class BalanceWindow extends javax.swing.JFrame {
                         .addGap(74, 74, 74)
                         .addComponent(balanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel1)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,21 +109,19 @@ public class BalanceWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        double gmi;
         try {
-            double balance = Double.parseDouble(balanceField.getText());
-            if (balance < 0) {
-                JOptionPane.showMessageDialog(jButton2, "Balance cannot be negative.");
+            gmi = Double.parseDouble(balanceField.getText());
+            if (gmi < 0) {
+                JOptionPane.showMessageDialog(jButton2, "GMI cannot be negative.");
             } else {
-                user.getCustomer()[User.getLoginIndx()].addBalance(balance);
-                System.out.println("[UPDATE]: Added balance - " + user.getCustomer()[User.getLoginIndx()].getBalance());
-                System.out.println("mambo");
-                db.updateBalanceLabel();
-                System.out.println("teio");
+                user.getCustomer()[User.getCustomerCnt() - 1].setGMI(gmi);
+                System.out.println("[UPDATE]: User GMI set to " + user.getCustomer()[User.getCustomerCnt() - 1].getGMI());
+                db.updateGMI();
                 dispose();
-            }
-        } catch(Exception e) {
-            System.out.println("[ERROR]: An error occured.");
-            e.printStackTrace();
+            }   
+        } catch (Exception e) {
+            System.out.println("[ERROR] Cannot set GMI.");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

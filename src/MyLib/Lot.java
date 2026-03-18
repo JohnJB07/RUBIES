@@ -27,6 +27,10 @@ public class Lot {
         this.totalValue = totalValue1;
         this.status = status;
     }
+    
+    public String returnLotNumbers() {
+        return "Lot " + lotNumber;
+    }
 
     // GETTERS
     public House getHouse() {

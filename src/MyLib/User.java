@@ -63,14 +63,38 @@ public class User {
             System.out.println("[CHECK]: Input field is incomplete");
             return 3;
         }
+        if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
+            return 1;
+        }
         if (agentCnt == 0) {
             System.out.println("[CHECK]: No agent accounts exists");
         } else {
             for (int i = 0; i < agentCnt; i++) {
                 Agent currentAgent = agent[i];
                 if (username.equals(currentAgent.getUsername())) {
-                    if (password.equals(currentAgent.getPassword())) {
-                        loginType = 1;
+                   if (password.equals(currentAgent.getPassword())) {
+                       if (currentAgent.getStatus().equalsIgnoreCase("Unavailable")) {
+                            System.out.println("[CHECK]: Agent account is disabled.");
+                            return 4;
+                        } else {
+                            loginType = 1;
+                            loginIndx = i;
+                            return 0;
+                        }
+                   } else {
+                       return 2;
+                   }
+                }
+            }
+        }
+        if (customerCnt == 0) {
+            System.out.println("[CHECK]: No customer accounts exist");
+        } else {
+            for (int i = 0; i < customerCnt; i++) {
+                Customer currentCustomer = customer[i];
+                if (username.equals(currentCustomer.getUsername())) {
+                    if (password.equals(currentCustomer.getPassword())) {
+                        loginType = 2;
                         loginIndx = i;
                         return 0;
                     } else {
@@ -79,32 +103,11 @@ public class User {
                 }
             }
         }
-        if (customerCnt == 0) {
-            System.out.println("[CHECK]: No customer accounts exist");
-        } else {
-            // Check for customer data
-            for (int i = 0; i < customerCnt; i++) {
-                Customer currentCustomer = customer[i];
-                if (username.equals(currentCustomer.getUsername())) {
-                    if (password.equals(currentCustomer.getPassword())) {
-                        loginType = 2; // Customer type
-                        loginIndx = i; // CUstomer index
-                        return 0; // Success
-                    } else {
-                        return 2;
-                    }
-                }
-            }
-        }
-        
-        if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
-            return 1;
-        }
-        
         return -1; // Account does not exist
     }
     
-    // GETTERS SETTERS
+    // REMOVED LOGOUT METHOD
+
     public Customer[] getCustomer() {
         return customer;
     }
@@ -125,8 +128,20 @@ public class User {
         return loginType;
     }
 
+    public static void setLoginType(int loginType) {
+        User.loginType = loginType;
+    }
+
     public static int getLoginIndx() {
         return loginIndx;
+    }
+
+    public static void setLoginIndx(int loginIndx) {
+        User.loginIndx = loginIndx;
+    }
+
+    public static int getLotIdx() {
+        return lotIdx;
     }
 
     public static void setLotIdx(int lotIdx) {

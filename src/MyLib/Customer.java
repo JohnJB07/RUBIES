@@ -36,6 +36,10 @@ public class Customer extends Stakeholders {
         totalOwed += amt;
     }
     
+    public void changeTotalOwed(double amt) {
+        totalOwed = amt;
+    }
+    
     public void payTotalOwed() {
         if (totalOwed > accountBalance) {
             System.out.println("[CHECK]: Insufficient Balance");

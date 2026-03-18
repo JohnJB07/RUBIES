@@ -272,6 +272,16 @@ public class RealEstateWindow extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         System.out.println("[UPDATE]: Confirming Dialog");
+        if (lot.getStatus() == "Sold") {
+                System.out.println("[NOTICE]: Lot cannot be reserved as it is bought");
+                JOptionPane.showMessageDialog(jButton2, "Cannot reserve, Lot has been bought.");
+                return;
+            } else if (lot.getStatus() == "Reserved") {
+                System.out.println("[NOTICE]: Lot cannot be reserved as it is reserved already.");
+                JOptionPane.showMessageDialog(jButton2, "Cannot reserve, Lot has been reserved.");
+                return;
+                
+            }
         if (JOptionPane.showConfirmDialog(jButton2, "Would you like to reserve lot?", 
                 "Notice", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             if (lot.getStatus() == "Sold") {
@@ -308,6 +318,10 @@ public class RealEstateWindow extends javax.swing.JFrame {
                     bw.setLocationRelativeTo(null);
                     bw.setVisible(true);
                     dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(jButton1, "Lot has been reserved");
                 }
                 break;
             default:

@@ -8,6 +8,7 @@ import MyLib.Admin;
 import MyLib.Agent;
 import MyLib.RealEstate;
 import MyLib.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +61,9 @@ public class ManageAgent extends javax.swing.JFrame {
         javax.swing.JComboBox<String> statusCombo =
             new javax.swing.JComboBox<>(new String[]{"Available", "Unavailable"});
         jTable1.getColumnModel().getColumn(2).setCellEditor(new javax.swing.DefaultCellEditor(statusCombo));
+        for (int i = 0; i < count; i++) {
+            model.setValueAt(user.getAgent()[i].getStatus().toString(), i, 2);
+        }
     }
 
 
@@ -75,6 +79,7 @@ public class ManageAgent extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -120,18 +125,30 @@ public class ManageAgent extends javax.swing.JFrame {
         jButton2.setText("Back");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
+        saveButton.setBackground(new java.awt.Color(255, 0, 0));
+        saveButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        saveButton.setForeground(new java.awt.Color(255, 255, 255));
+        saveButton.setText("Save");
+        saveButton.addActionListener(this::saveButtonActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 81, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(307, 307, 307)
+                .addComponent(saveButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +157,9 @@ public class ManageAgent extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(saveButton)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,9 +173,39 @@ public class ManageAgent extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        if (jTable1.getRowCount() == 0) {
+            System.out.println("[CHECK]: No agents found.");
+        } else {
+            System.out.println("[CHECK]: Found agents.");
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                if (jTable1.getValueAt(i, 2) != null) {
+                    switch(jTable1.getValueAt(i, 2).toString()) {
+                        case "Available":
+                            user.getAgent()[i].setStatus("Available");
+                            System.out.println("[UPDATE]: Set agent " + (i + 1) + " status as Available");
+                            break;
+                        case "Unavailable":
+                            user.getAgent()[i].setStatus("Unavailable");
+                            System.out.println("[UPDATE]: Set agent " + (i + 1) + " status as Unavailable");
+                            break;
+                        default:
+                            System.out.println("[ERROR]: Unexpected Behavior Occurred");
+                            break;
+                    }
+                } else {
+                    continue;
+                }
+            }
+            JOptionPane.showMessageDialog(saveButton, "Successfully updated agents");
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,17 +11,17 @@ import javax.swing.JOptionPane;
  *
  * @author Jayvee
  */
-public class BalanceWindow extends javax.swing.JFrame {
+public class PayOwedWindow extends javax.swing.JFrame {
     private User user;
     private Admin admin;
     private Dashboard db;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BalanceWindow.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PayOwedWindow.class.getName());
 
     /**
      * Creates new form BalanceWindow
      */
-    public BalanceWindow(Admin admin, User user, Dashboard db) {
+    public PayOwedWindow(Admin admin, User user, Dashboard db) {
         this.user = user;
         this.admin = admin;
         this.db = db;
@@ -56,45 +56,47 @@ public class BalanceWindow extends javax.swing.JFrame {
         jButton1.setText("Back");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jButton2.setText("Add Balance");
+        jButton2.setText("Pay");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("BALANCE");
+        jLabel1.setText("Pay Total Owed");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(4, 4, 4))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(balanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jButton2)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(balanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(jButton2)))
+                        .addGap(0, 66, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(balanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addGap(12, 12, 12))
+                .addGap(14, 14, 14))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -110,17 +112,42 @@ public class BalanceWindow extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            double balance = Double.parseDouble(balanceField.getText());
-            if (balance < 0) {
-                JOptionPane.showMessageDialog(jButton2, "Balance cannot be negative.");
-            } else {
-                user.getCustomer()[User.getLoginIndx()].addBalance(balance);
-                System.out.println("[UPDATE]: Added balance - " + user.getCustomer()[User.getLoginIndx()].getBalance());
-                System.out.println("mambo");
-                db.updateBalanceLabel();
-                System.out.println("teio");
-                dispose();
+            double paymentAmount = Double.parseDouble(balanceField.getText());
+            int index = User.getLoginIndx();
+            double currentBalance = user.getCustomer()[index].getBalance();
+            double currentOwed = user.getCustomer()[index].getTotalOwed();
+
+            if (paymentAmount <= 0) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid amount greater than zero.");
+                return;
             }
+
+            if (paymentAmount > currentBalance) {
+                JOptionPane.showMessageDialog(this, "Insufficient balance.");
+                return;
+            }
+
+            if (paymentAmount > currentOwed) {
+                JOptionPane.showMessageDialog(this, "You cannot pay more than your total owed.");
+                return;
+            }
+
+            // Deduct the money from the balance using a negative number
+            user.getCustomer()[index].addBalance(-paymentAmount); 
+            
+            // Subtract the payment from the total owed
+            user.getCustomer()[index].changeTotalOwed(currentOwed - paymentAmount);
+
+            System.out.println("[UPDATE]: Paid owed amount: " + paymentAmount);
+            
+            // Update the text on the dashboard
+            db.updateBalanceLabel();
+            db.updateTotalOwed();
+            
+            dispose();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid number.");
         } catch(Exception e) {
             System.out.println("[ERROR]: An error occured.");
             e.printStackTrace();

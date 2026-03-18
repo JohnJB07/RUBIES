@@ -206,6 +206,8 @@ public class Login extends javax.swing.JFrame {
             case 3:
                 jLabel4.setText("Incomplete input field");
                 break;
+            case 4:
+                jLabel4.setText("Agent is disabled.");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
