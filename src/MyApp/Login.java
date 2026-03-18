@@ -188,9 +188,14 @@ public class Login extends javax.swing.JFrame {
                 dispose();
                 break;
             case 1: // Admin login
-                ManageAgent agentWindow = new ManageAgent(admin, user, re);
-                agentWindow.setVisible(true);
-                dispose();   
+                Directory directoryPanel = new Directory(admin, user, re);
+                javax.swing.JFrame frame = new javax.swing.JFrame("Directory");
+                frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+                frame.setContentPane(directoryPanel);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                dispose();
                 break;
             case 2:
                 jLabel4.setText("Wrong password");

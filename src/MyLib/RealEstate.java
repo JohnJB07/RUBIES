@@ -112,9 +112,8 @@ public class RealEstate implements ICalculate, ISearch {
         return Math.min(tcp, MAX_PRICE);
     }
 
-    @Override
-    public void filter() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void filter(int indexes) {
+        
     }
 
     public Lot[] getLot() {

@@ -98,22 +98,27 @@ public class RealEstateWindow extends javax.swing.JFrame {
         jLabel3.setText("Size:");
 
         jTextField1.setEditable(false);
+        jTextField1.setFocusable(false);
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         jTextField2.setEditable(false);
+        jTextField2.setFocusable(false);
 
         jTextField3.setEditable(false);
+        jTextField3.setFocusable(false);
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
 
         jLabel4.setForeground(java.awt.Color.white);
         jLabel4.setText("Inner:");
 
         jTextField4.setEditable(false);
+        jTextField4.setFocusable(false);
 
         jLabel5.setForeground(java.awt.Color.white);
         jLabel5.setText("Near Amenities:");
 
         jTextField5.setEditable(false);
+        jTextField5.setFocusable(false);
 
         jLabel6.setForeground(java.awt.Color.white);
         jLabel6.setText("Others");
@@ -128,6 +133,8 @@ public class RealEstateWindow extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 102, 255));
         jButton2.setText("RESERVE");
         jButton2.addActionListener(this::jButton2ActionPerformed);
+
+        jTextField6.setFocusable(false);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setForeground(java.awt.Color.white);

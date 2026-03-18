@@ -1258,6 +1258,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        FilterWindow fw = new FilterWindow(user, realEstate, this);
+        fw.setLocationRelativeTo(null);
+        fw.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void updateBalanceLabel() {

@@ -9,5 +9,5 @@ package MyLib;
  * @author Jayvee
  */
 public interface ISearch {
-    public void filter();
+    public void filter(int index);
 }
