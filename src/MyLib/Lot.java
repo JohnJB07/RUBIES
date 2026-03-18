@@ -15,8 +15,8 @@ public class Lot {
     private boolean isInner;
     private double totalValue; // Price of lot
     private static int userLoginIndex = -1;
-    private double reservationFee;
-    private double downpaymentFee;
+    private double reservationFee = 10_000;
+    private double downpaymentFee = 0;
     private String status;
     
     public Lot(House house1, int lotNumber1, double squareMeters1, boolean inner, double totalValue1, String status) {
@@ -26,8 +26,6 @@ public class Lot {
         this.isInner = inner;
         this.totalValue = totalValue1;
         this.status = status;
-        this.reservationFee = 0;
-        this.downpaymentFee = 0;
     }
     
     public String returnLotNumbers() {

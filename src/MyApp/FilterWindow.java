@@ -13,6 +13,7 @@ import MyLib.User;
 public class FilterWindow extends javax.swing.JFrame {
     private User user;
     private RealEstate realEstate;
+    private LotReport lr;
     private Dashboard dashboard;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FilterWindow.class.getName());
 
@@ -24,6 +25,14 @@ public class FilterWindow extends javax.swing.JFrame {
     public FilterWindow(User user, RealEstate realEstate, Dashboard dashboard) {
         this.user = user;
         this.dashboard = dashboard;
+        this.realEstate = realEstate;
+        initComponents();
+        getContentPane().setBackground(java.awt.Color.BLACK);
+    }
+    
+    public FilterWindow(User user, RealEstate realEstate, LotReport lr) {
+        this.lr = lr;
+        this.user = user;
         this.realEstate = realEstate;
         initComponents();
         getContentPane().setBackground(java.awt.Color.BLACK);
@@ -200,12 +209,12 @@ public class FilterWindow extends javax.swing.JFrame {
 
         jCheckBox6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox6.setForeground(new java.awt.Color(255, 51, 51));
-        jCheckBox6.setText("5 mil");
+        jCheckBox6.setText("4 mil");
         jCheckBox6.addItemListener(this::innerItemStateChanged);
 
         jCheckBox7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox7.setForeground(new java.awt.Color(255, 51, 51));
-        jCheckBox7.setText("4 mil");
+        jCheckBox7.setText("3.5 mil");
         jCheckBox7.addItemListener(this::innerItemStateChanged);
 
         jCheckBox8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -215,12 +224,12 @@ public class FilterWindow extends javax.swing.JFrame {
 
         jCheckBox9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox9.setForeground(new java.awt.Color(255, 51, 51));
-        jCheckBox9.setText("2 mil");
+        jCheckBox9.setText("2.5 mil");
         jCheckBox9.addItemListener(this::innerItemStateChanged);
 
         jCheckBox10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox10.setForeground(new java.awt.Color(255, 51, 51));
-        jCheckBox10.setText("1 mil");
+        jCheckBox10.setText("2 mil");
         jCheckBox10.addItemListener(this::innerItemStateChanged);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -349,8 +358,13 @@ public class FilterWindow extends javax.swing.JFrame {
             jCheckBox7.isSelected(),  // 4 mil
             jCheckBox6.isSelected()   // 5 mil
         );
+        if (dashboard != null) {
+            dashboard.updateVisibility(visible); // Updates the buttons
+        }
         
-        dashboard.updateVisibility(visible);
+        if (lr != null) {
+            lr.updateTable(visible); // Updates the table rows
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

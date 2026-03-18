@@ -115,7 +115,7 @@ public class RealEstate implements ICalculate, ISearch {
     public boolean[] filter(boolean fInner, boolean fOuter,
             boolean fSingle, boolean fDuplex, boolean fTownhouse,
             boolean fAvail, boolean fReserved, boolean fSold,
-            boolean f1m, boolean f2m, boolean f3m, boolean f4m, boolean f5m) {
+            boolean f2m, boolean f2_5m, boolean f3m, boolean f3_5m, boolean f4m) {
         
         boolean[] isVisible = new boolean[100];
         for (int i = 0; i < lot.length; i++) {
@@ -144,14 +144,14 @@ public class RealEstate implements ICalculate, ISearch {
                                     (fSold && status.equalsIgnoreCase("Sold"));
 
             // 4. Price Range Filter ( < )
-            boolean noPriceFilter = !f1m && !f2m && !f3m && !f4m && !f5m;
+            boolean noPriceFilter = !f2m && !f2_5m && !f3m && !f3_5m && !f4m;
             double price = lot[i].getTotalValue();
             boolean matchesPrice = noPriceFilter ||
-                                   (f1m && price <= 1_000_000) ||
                                    (f2m && price <= 2_000_000) ||
+                                   (f2_5m && price <= 2_500_000) ||
                                    (f3m && price <= 3_000_000) ||
-                                   (f4m && price <= 4_000_000) ||
-                                   (f5m && price <= 5_000_000);
+                                   (f3_5m && price <= 3_500_000) ||
+                                   (f4m && price <= 4_000_000);
 
             // If ALL categories match, the lot is visible
             isVisible[i] = matchesPos && matchesType && matchesStatus && matchesPrice;

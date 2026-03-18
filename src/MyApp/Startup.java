@@ -22,9 +22,9 @@ public class Startup extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         getContentPane().setBackground(java.awt.Color.BLACK);
         initComponents();
-        /* CHECK LOT POPULATION DATA
+        // CHECK LOT POPULATION DATA
+        /*
         for (int i = 0; i < realEstate.getLot().length; i++) {
-            System.out.println("-----------------");
             System.out.println(realEstate.getLot()[i].returnLotNumbers() + " - " + realEstate.getLot()[i].getSquareMeters() + " - $" + realEstate.getLot()[i].getTotalValue());
         }
         */
