@@ -22,10 +22,6 @@ public class Agent extends Stakeholders {
         return "LIC-" + Math.round(Math.random() * 10000);
     }
 
-    public void setLicenseNo(String licenseNo) {
-        this.licenseNo = licenseNo;
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }

@@ -82,13 +82,14 @@ public class User {
         if (customerCnt == 0) {
             System.out.println("[CHECK]: No customer accounts exist");
         } else {
+            // Check for customer data
             for (int i = 0; i < customerCnt; i++) {
                 Customer currentCustomer = customer[i];
                 if (username.equals(currentCustomer.getUsername())) {
                     if (password.equals(currentCustomer.getPassword())) {
-                        loginType = 2;
-                        loginIndx = i;
-                        return 0;
+                        loginType = 2; // Customer type
+                        loginIndx = i; // CUstomer index
+                        return 0; // Success
                     } else {
                         return 2;
                     }
@@ -103,8 +104,7 @@ public class User {
         return -1; // Account does not exist
     }
     
-    // REMOVED LOGOUT METHOD
-
+    // GETTERS SETTERS
     public Customer[] getCustomer() {
         return customer;
     }
@@ -125,20 +125,8 @@ public class User {
         return loginType;
     }
 
-    public static void setLoginType(int loginType) {
-        User.loginType = loginType;
-    }
-
     public static int getLoginIndx() {
         return loginIndx;
-    }
-
-    public static void setLoginIndx(int loginIndx) {
-        User.loginIndx = loginIndx;
-    }
-
-    public static int getLotIdx() {
-        return lotIdx;
     }
 
     public static void setLotIdx(int lotIdx) {
