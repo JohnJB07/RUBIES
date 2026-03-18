@@ -4,6 +4,8 @@
  */
 package MyLib;
 
+import MyApp.Startup;
+
 /**
  *
  * @author Jayvee
@@ -37,13 +39,52 @@ public class User {
         }
     }
     
-    public void login() {
+    public int login(String username, String password) {
+        if (username.equals("") || password.equals("")) {
+            System.out.println("[CHECK]: Input field is incomplete");
+            return 3;
+        }
+        if (agentCnt == 0) {
+            System.out.println("[CHECK]: No agent accounts exists");
+        } else {
+            for (int i = 0; i < agentCnt; i++) {
+                Agent currentAgent = agent[i];
+                if (username.equals(currentAgent.getUsername())) {
+                    if (password.equals(currentAgent.getPassword())) {
+                        loginType = 1;
+                        loginIndx = i;
+                        return 0;
+                    } else {
+                        return 2;
+                    }
+                }
+            }
+        }
+        if (customerCnt == 0) {
+            System.out.println("[CHECK]: No customer accounts exist");
+        } else {
+            for (int i = 0; i < customerCnt; i++) {
+                Customer currentCustomer = customer[i];
+                if (username.equals(currentCustomer.getUsername())) {
+                    if (password.equals(currentCustomer.getPassword())) {
+                        loginType = 2;
+                        loginIndx = i;
+                        return 0;
+                    } else {
+                        return 2;
+                    }
+                }
+            }
+        }
         
+        if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
+            return 1;
+        }
+        
+        return -1; // Account does not exist
     }
     
-    public void logout() {
-        
-    }
+    // REMOVED LOGOUT METHOD
 
     public Customer[] getCustomer() {
         return customer;
@@ -84,6 +125,4 @@ public class User {
     public static void setLotIdx(int lotIdx) {
         User.lotIdx = lotIdx;
     }
-    
-    
 }

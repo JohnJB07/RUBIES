@@ -49,11 +49,11 @@ public class RealEstate implements ICalculate, ISearch {
 
             House house = new House(type, blockNumber, years, nearAmenities);
 
-            int lotNumber = i;
+            int lotNumber = ((i - 1) % lotsPerBlock) + 1;
             double squareMeters = 40 + (rand.nextDouble() * 60); // 40–100 sqm
 
             int positionInBlock = ((i - 1) % lotsPerBlock) + 1;
-            boolean isInner = !(positionInBlock == 1 || positionInBlock == lotsPerBlock);
+            boolean isInner = !(positionInBlock % 5 == 1 || positionInBlock % 5 == 0);
 
             double basePrice = 1_096_500;
             double multiplier = 1.0;
@@ -82,7 +82,7 @@ public class RealEstate implements ICalculate, ISearch {
 
             double totalValue = calculateTotalPrice(basePrice * multiplier, squareMeters);
 
-            boolean status = rand.nextBoolean();
+            String status = "Available";
 
             Lot lots = new Lot(house, lotNumber, squareMeters, isInner, totalValue, status);
             lot[i - 1] = lots;

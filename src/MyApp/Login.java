@@ -28,6 +28,7 @@ public class Login extends javax.swing.JFrame {
         this.re = re;
         this.admin = admin;
         this.user = user;
+        getContentPane().setBackground(java.awt.Color.BLACK);
         initComponents();
     }
 
@@ -48,25 +49,39 @@ public class Login extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 51));
+        jButton1.setForeground(java.awt.Color.white);
         jButton1.setText("Back");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(java.awt.Color.black);
+        jPanel1.setToolTipText("");
+        jPanel1.setName(""); // NOI18N
 
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
-        jLabel1.setText("Login");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.white);
+        jLabel1.setText("Log in");
 
+        jLabel2.setForeground(java.awt.Color.white);
         jLabel2.setText("Username");
 
+        jLabel3.setForeground(java.awt.Color.white);
         jLabel3.setText("Password");
 
+        jButton3.setBackground(new java.awt.Color(255, 0, 51));
+        jButton3.setForeground(java.awt.Color.white);
         jButton3.setText("Login");
         jButton3.addActionListener(this::jButton3ActionPerformed);
+
+        jLabel4.setForeground(java.awt.Color.red);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,22 +96,28 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,9 +126,11 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,7 +153,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,65 +169,36 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Dashboard dashboard;
         Startup startupWindow = new Startup();
         startupWindow.setResizable(false);
         
         String username = jTextField1.getText().toString(); // Username
         String password = jTextField2.getText().toString(); //password
-        // Check if there are agents
-        if (user.getAgentCnt() == 0) {
-            System.out.println("[NOTICE]: No agent list skipping..");
-        } else {
-            for (int i = 0; i < user.getAgentCnt(); i++) {
-                Agent currentAgent = user.getAgent()[i];
-                if (username.equals(currentAgent.getUsername()) && password.equals(currentAgent.getPassword())) {
-                    System.out.println("[SUCCESS]: Logging in as " + currentAgent.getUsername());
-                    User.setLoginType(1);
-                    User.setLoginIndx(i);
-                    dashboard = new Dashboard(user, re);
-                    dashboard.setLocationRelativeTo(null);
-                    dashboard.setVisible(true);
-                    dispose();
-                } else {
-                    System.out.println("[NOTICE]: Account exists but wrong password");
-                }
-            }
-        }    
+ 
+        int result = user.login(username, password);
         
-        if (username.equals("") || password.equals("")) {
-            System.out.println("[ERROR]: Incomplete input field");
-            JOptionPane.showMessageDialog(jButton3, "Incomplete Input Field");
-        } else {
-            // Check if there are customers
-            if (user.getCustomerCnt() == 0) {
-                System.out.println("[NOTICE]: No customer list skipping..");
-            } else {
-                // Check for comparisons
-                for (int i = 0; i < user.getCustomerCnt(); i++) {
-                    Customer currentUser = user.getCustomer()[i];
-                    if (username.equals(currentUser.getUsername()) && password.equals(currentUser.getPassword())) {
-                        System.out.println("[SUCCESS]: Logging in as " + currentUser.getUsername());
-                        User.setLoginType(2);
-                        User.setLoginIndx(i);
-                        
-                        dashboard = new Dashboard(user, re);
-                        dashboard.setLocationRelativeTo(null);
-                        dashboard.setVisible(true);
-                        dispose();
-                    } else {
-                        System.out.println("[NOTICE]: Account exists but wrong password");
-                    }
-                }
-            }
-        
-            Admin admin = new Admin();
-            if (username.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
+        switch(result) {
+            case -1:
+                jLabel4.setText("Account does not exist");
+                break;
+            case 0: // Go to dashboard
+                Dashboard dashboard = new Dashboard(user, re);
+                dashboard.setLocationRelativeTo(null);
+                dashboard.setVisible(true);
+                dispose();
+                break;
+            case 1: // Admin login
                 ManageAgent agentWindow = new ManageAgent(admin, user, re);
                 agentWindow.setVisible(true);
-                dispose();       
-            }
-        }        
+                dispose();   
+                break;
+            case 2:
+                jLabel4.setText("Wrong password");
+                break;
+            case 3:
+                jLabel4.setText("Incomplete input field");
+                break;
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -216,6 +210,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

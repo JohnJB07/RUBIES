@@ -14,15 +14,15 @@ public class Lot {
     private double squareMeters;
     private boolean isInner;
     private double totalValue;
-    private boolean status;
+    private String status;
     
-    public Lot(House house1, int lotNumber1, double squareMeters1, boolean inner, double totalValue1, boolean status1) {
+    public Lot(House house1, int lotNumber1, double squareMeters1, boolean inner, double totalValue1, String status) {
         this.house = house1;
         this.lotNumber = lotNumber1;
         this.squareMeters = squareMeters1;
         this.isInner = inner;
         this.totalValue = totalValue1;
-        this.status = status1;
+        this.status = status;
     }
     
     public String returnLotNumbers() {
@@ -50,7 +50,7 @@ public class Lot {
         return totalValue;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
     

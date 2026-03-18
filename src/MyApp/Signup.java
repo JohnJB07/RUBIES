@@ -28,6 +28,7 @@ public class Signup extends javax.swing.JFrame {
         this.user = user;
         this.re = re;
         initComponents();
+        getContentPane().setBackground(java.awt.Color.BLACK);
     }
 
     /**
@@ -54,25 +55,34 @@ public class Signup extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 51));
+        jButton1.setForeground(java.awt.Color.white);
         jButton1.setText("Back");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(java.awt.Color.black);
 
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
+        jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Username");
 
+        jLabel2.setForeground(java.awt.Color.white);
         jLabel2.setText("Password");
 
+        jLabel3.setForeground(java.awt.Color.white);
         jLabel3.setText("Confirm password");
 
+        jButton2.setBackground(new java.awt.Color(255, 0, 51));
+        jButton2.setForeground(java.awt.Color.white);
         jButton2.setText("Register");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
+        jRadioButton1.setForeground(java.awt.Color.white);
         jRadioButton1.setText("Agent");
         jRadioButton1.addItemListener(this::jRadioButton1ItemStateChanged);
 
+        jRadioButton2.setForeground(java.awt.Color.white);
         jRadioButton2.setText("Customer");
         jRadioButton2.addItemListener(this::jRadioButton1ItemStateChanged);
 
@@ -177,37 +187,51 @@ public class Signup extends javax.swing.JFrame {
         if (username.equals("") || password.equals("") || confirmPass.equals("")) {
             System.out.println("[ERROR]: Incomplete input field");
             JOptionPane.showMessageDialog(jButton2, "Incomplete Input Field");
-        } else {
-            if (password.equals(confirmPass)) {
-                // Create user based on role selected (customer or agent)
-                switch (userType) {
-                    case 1: // Agent
-                    {
-                        user.register(1, username, password);
-                        startupWindow.setLocationRelativeTo(null);
-                        startupWindow.setVisible(true);
-                        dispose();
-                        break;
-                    }
-                    case 2: // Customer
-                    {
-                        
-                        user.register(2, username, password);
-                        gmiWindow.setLocationRelativeTo(null);
-                        gmiWindow.setVisible(true);
-                        dispose();
-                        break;
-                    }
-                    default:
-                        System.out.println("[ERROR]: No role selected");
-                        JOptionPane.showMessageDialog(jButton2, "Select a Role");
-                }
-            } else {
-                JOptionPane.showMessageDialog(jButton2, "Passwords do not match");
-                System.out.println("[ERROR]: Passwords do not match");
+            return;
+        } 
+        
+        for (int i = 0; i < user.getAgentCnt(); i++) {
+            if (username.equals(user.getAgent()[i].getUsername())) {
+                JOptionPane.showMessageDialog(jButton2, "Username is already taken");
+                return;
             }
         }
         
+        // Check customers
+        for (int i = 0; i < user.getCustomerCnt(); i++) {
+            if (username.equals(user.getCustomer()[i].getUsername())) {
+                JOptionPane.showMessageDialog(jButton2, "Username is already taken");
+                return;
+            }
+        }
+        
+        if (password.equals(confirmPass)) {
+            // Create user based on role selected (customer or agent)
+            switch (userType) {
+                case 1: // Agent
+                {
+                    user.register(1, username, password);
+                    startupWindow.setLocationRelativeTo(null);
+                    startupWindow.setVisible(true);
+                    dispose();
+                    break;
+                }
+                case 2: // Customer
+                {
+                    user.register(2, username, password);
+                    gmiWindow.setLocationRelativeTo(null);
+                    gmiWindow.setVisible(true);
+                    dispose();
+                    break;
+                }
+                default:
+                    System.out.println("[ERROR]: No role selected");
+                    JOptionPane.showMessageDialog(jButton2, "Select a Role");
+            }
+        } else {
+            JOptionPane.showMessageDialog(jButton2, "Passwords do not match");
+            System.out.println("[ERROR]: Passwords do not match");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

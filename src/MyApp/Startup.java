@@ -20,6 +20,7 @@ public class Startup extends javax.swing.JFrame {
     // Constructor
     public Startup() {
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(java.awt.Color.BLACK);
         initComponents();
         /*
         for (int i = 0; i < realEstate.getLot().length; i++) {
@@ -33,6 +34,7 @@ public class Startup extends javax.swing.JFrame {
         this.admin = admin;
         this.realEstate = re;
         this.user = user;
+        getContentPane().setBackground(java.awt.Color.BLACK);
         initComponents();
     }
 
@@ -54,7 +56,10 @@ public class Startup extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(java.awt.Color.black);
         setResizable(false);
+
+        jPanel1.setBackground(java.awt.Color.black);
 
         jButton3.setBackground(new java.awt.Color(255, 0, 51));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,7 +102,7 @@ public class Startup extends javax.swing.JFrame {
         rubies_label.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         rubies_label.setForeground(new java.awt.Color(255, 0, 51));
         rubies_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rubies_label.setText("RUBIES");
+        rubies_label.setText("R.U.B.I.E.S");
         rubies_label.setPreferredSize(new java.awt.Dimension(100, 100));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rubies_logo.png"))); // NOI18N
@@ -107,16 +112,16 @@ public class Startup extends javax.swing.JFrame {
         rubies_bgLayout.setHorizontalGroup(
             rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rubies_bgLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         rubies_bgLayout.setVerticalGroup(
             rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rubies_bgLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(rubies_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rubies_label, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -129,15 +134,17 @@ public class Startup extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(159, 159, 159)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(rubies_bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
