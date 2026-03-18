@@ -93,7 +93,7 @@ public class Directory extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        EditLotDetails lotWindow = new EditLotDetails(re);
+        EditLotDetails lotWindow = new EditLotDetails(admin, user, re);
         javax.swing.JFrame frame = new javax.swing.JFrame("Edit Lot Details");
         frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         frame.setContentPane(lotWindow);

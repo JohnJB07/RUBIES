@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
@@ -152,7 +152,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="inner" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="outer" min="-2" max="-2" attributes="0"/>
+                      <Component id="outer" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="single" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -187,6 +187,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inner"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="outer">
               <Properties>
@@ -198,6 +201,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Outer"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="single">
               <Properties>
@@ -209,6 +215,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Single"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="duplex">
               <Properties>
@@ -220,6 +229,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Duplex"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="townhouse">
               <Properties>
@@ -231,6 +243,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Townhouse"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -304,7 +319,7 @@
                 <Property name="text" type="java.lang.String" value="Available"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="availActionPerformed"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
               </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="reserved">
@@ -317,6 +332,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reserved"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="sold">
               <Properties>
@@ -328,6 +346,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sold"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -391,6 +412,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="5 mil"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox7">
               <Properties>
@@ -402,6 +426,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="4 mil"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox8">
               <Properties>
@@ -413,6 +440,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="3 mil"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox9">
               <Properties>
@@ -424,6 +454,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="2 mil"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox10">
               <Properties>
@@ -435,6 +468,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="1 mil"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="innerItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>

@@ -111,9 +111,53 @@ public class RealEstate implements ICalculate, ISearch {
         double MAX_PRICE = 5_500_500;
         return Math.min(tcp, MAX_PRICE);
     }
-
-    public void filter(int indexes) {
+    
+    public boolean[] filter(boolean fInner, boolean fOuter,
+            boolean fSingle, boolean fDuplex, boolean fTownhouse,
+            boolean fAvail, boolean fReserved, boolean fSold,
+            boolean f1m, boolean f2m, boolean f3m, boolean f4m, boolean f5m) {
         
+        boolean[] isVisible = new boolean[100];
+        for (int i = 0; i < lot.length; i++) {
+            if (lot[i] == null) continue; // Skip if lot isn't initialized
+            
+            // 1. Position Filter
+            boolean noPosFilter = !fInner && !fOuter;
+            boolean matchesPos = noPosFilter || 
+                                 (fInner && lot[i].isIsInner()) || 
+                                 (fOuter && !lot[i].isIsInner());
+
+            // 2. Type Filter
+            boolean noTypeFilter = !fSingle && !fDuplex && !fTownhouse;
+            String type = lot[i].getHouse().getType();
+            boolean matchesType = noTypeFilter || 
+                                  (fSingle && type.equalsIgnoreCase("Single")) ||
+                                  (fDuplex && type.equalsIgnoreCase("Duplex")) ||
+                                  (fTownhouse && type.equalsIgnoreCase("Townhouse"));
+
+            // 3. Status Filter
+            boolean noStatusFilter = !fAvail && !fReserved && !fSold;
+            String status = lot[i].getStatus();
+            boolean matchesStatus = noStatusFilter || 
+                                    (fAvail && status.equalsIgnoreCase("Available")) ||
+                                    (fReserved && status.equalsIgnoreCase("Reserved")) ||
+                                    (fSold && status.equalsIgnoreCase("Sold"));
+
+            // 4. Price Range Filter ( < )
+            boolean noPriceFilter = !f1m && !f2m && !f3m && !f4m && !f5m;
+            double price = lot[i].getTotalValue();
+            boolean matchesPrice = noPriceFilter ||
+                                   (f1m && price <= 1_000_000) ||
+                                   (f2m && price <= 2_000_000) ||
+                                   (f3m && price <= 3_000_000) ||
+                                   (f4m && price <= 4_000_000) ||
+                                   (f5m && price <= 5_000_000);
+
+            // If ALL categories match, the lot is visible
+            isVisible[i] = matchesPos && matchesType && matchesStatus && matchesPrice;
+        }
+        
+        return isVisible;
     }
 
     public Lot[] getLot() {

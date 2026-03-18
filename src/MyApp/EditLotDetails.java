@@ -4,8 +4,10 @@
  */
 package MyApp;
 
+import MyLib.Admin;
 import MyLib.Lot;
 import MyLib.RealEstate;
+import MyLib.User;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -16,15 +18,18 @@ import javax.swing.JOptionPane;
  * @author Predator
  */
 public class EditLotDetails extends javax.swing.JPanel {
+    private User user;
+    private Admin admin;
     private RealEstate realEstate;
     private JList<Lot> lotList;
     
     /**
      * Creates new form EditLotDetails
      */
-    public EditLotDetails(RealEstate re) {
+    public EditLotDetails(Admin admin, User user, RealEstate re) {
         this.realEstate = re;
-         
+        this.user = user;
+        this.admin = admin;
         DefaultListModel<Lot> model = new DefaultListModel<>();
         for (Lot l : realEstate.getLot()) {
         if (l != null) { // avoid nulls
@@ -193,7 +198,7 @@ public class EditLotDetails extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Startup startupWindow = new Startup();
+        Startup startupWindow = new Startup(admin, user, realEstate);
         startupWindow.setLocationRelativeTo(null);
         startupWindow.setVisible(true);
         // dispose();

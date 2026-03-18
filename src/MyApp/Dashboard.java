@@ -7,6 +7,7 @@ import MyLib.Admin;
 import MyLib.Lot;
 import MyLib.RealEstate;
 import MyLib.User;
+import javax.swing.ButtonGroup;
 
 /**
  *
@@ -388,6 +389,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         block1.setBackground(new java.awt.Color(153, 153, 153));
+        block1.setMinimumSize(new java.awt.Dimension(1133, 58));
 
         jLabel1.setText("BLOCK 1");
 
@@ -533,6 +535,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         block2.setBackground(new java.awt.Color(153, 153, 153));
+        block2.setMinimumSize(new java.awt.Dimension(1133, 58));
 
         jLabel2.setText("BLOCK 2");
 
@@ -678,6 +681,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         block3.setBackground(new java.awt.Color(153, 153, 153));
+        block3.setMinimumSize(new java.awt.Dimension(1133, 58));
 
         jLabel4.setText("BLOCK 3");
 
@@ -823,6 +827,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         block4.setBackground(new java.awt.Color(153, 153, 153));
+        block4.setMinimumSize(new java.awt.Dimension(1133, 58));
 
         jLabel5.setText("BLOCK 4");
 
@@ -968,6 +973,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         block5.setBackground(new java.awt.Color(153, 153, 153));
+        block5.setMinimumSize(new java.awt.Dimension(1133, 58));
 
         jLabel6.setText("BLOCK 5");
 
@@ -1275,6 +1281,43 @@ public class Dashboard extends javax.swing.JFrame {
         user.getCustomer()[User.getLoginIndx()].reserveLot();
         balance1.setText("Total owed: " + String.valueOf(user.getCustomer()[User.getLoginIndx()].getTotalOwed()));
     }
+    
+    public void updateVisibility(boolean[] visibilityMap) {
+        javax.swing.JPanel[] blocks = {block1, block2, block3, block4, block5};
+
+        for (javax.swing.JPanel block : blocks) {
+            for (java.awt.Component c : block.getComponents()) {
+
+                // Check if button
+                if (!(c instanceof javax.swing.JButton)) {
+                    continue;
+                }
+
+                javax.swing.JButton btn = (javax.swing.JButton) c;
+                String cmd = btn.getActionCommand(); 
+
+                if (cmd == null || cmd.isEmpty()) continue;
+
+                try {
+                    int lotIndex = Integer.parseInt(cmd) - 1; 
+                    boolean showButton = visibilityMap[lotIndex];
+
+                    // Show button if it matches the filter, else hide it
+                    if (showButton) {
+                        btn.setContentAreaFilled(true);
+                        btn.setBorderPainted(false);
+                        btn.setEnabled(true);
+                    } else {
+                        btn.setContentAreaFilled(false);
+                        btn.setBorderPainted(false);
+                        btn.setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    System.out.println("[ERROR]: Unexpected behavior occured");
+                }
+            }
+    }
+}
     
     public int buyTheProperty(Lot lot) {
         int result = user.getCustomer()[User.getLoginIndx()].buyProperty(lot);

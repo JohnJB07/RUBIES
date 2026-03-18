@@ -61,7 +61,7 @@ public class FilterWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(java.awt.Color.black);
         setResizable(false);
@@ -84,22 +84,27 @@ public class FilterWindow extends javax.swing.JFrame {
         inner.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         inner.setForeground(new java.awt.Color(255, 51, 51));
         inner.setText("Inner");
+        inner.addItemListener(this::innerItemStateChanged);
 
         outer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         outer.setForeground(new java.awt.Color(255, 51, 51));
         outer.setText("Outer");
+        outer.addItemListener(this::innerItemStateChanged);
 
         single.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         single.setForeground(new java.awt.Color(255, 51, 51));
         single.setText("Single");
+        single.addItemListener(this::innerItemStateChanged);
 
         duplex.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         duplex.setForeground(new java.awt.Color(255, 51, 51));
         duplex.setText("Duplex");
+        duplex.addItemListener(this::innerItemStateChanged);
 
         townhouse.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         townhouse.setForeground(new java.awt.Color(255, 51, 51));
         townhouse.setText("Townhouse");
+        townhouse.addItemListener(this::innerItemStateChanged);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,7 +132,7 @@ public class FilterWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inner)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(outer)
+                .addComponent(outer, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(single)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -147,15 +152,17 @@ public class FilterWindow extends javax.swing.JFrame {
         avail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         avail.setForeground(new java.awt.Color(255, 51, 51));
         avail.setText("Available");
-        avail.addActionListener(this::availActionPerformed);
+        avail.addItemListener(this::innerItemStateChanged);
 
         reserved.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         reserved.setForeground(new java.awt.Color(255, 51, 51));
         reserved.setText("Reserved");
+        reserved.addItemListener(this::innerItemStateChanged);
 
         sold.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         sold.setForeground(new java.awt.Color(255, 51, 51));
         sold.setText("Sold");
+        sold.addItemListener(this::innerItemStateChanged);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -194,22 +201,27 @@ public class FilterWindow extends javax.swing.JFrame {
         jCheckBox6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox6.setForeground(new java.awt.Color(255, 51, 51));
         jCheckBox6.setText("5 mil");
+        jCheckBox6.addItemListener(this::innerItemStateChanged);
 
         jCheckBox7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox7.setForeground(new java.awt.Color(255, 51, 51));
         jCheckBox7.setText("4 mil");
+        jCheckBox7.addItemListener(this::innerItemStateChanged);
 
         jCheckBox8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox8.setForeground(new java.awt.Color(255, 51, 51));
         jCheckBox8.setText("3 mil");
+        jCheckBox8.addItemListener(this::innerItemStateChanged);
 
         jCheckBox9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox9.setForeground(new java.awt.Color(255, 51, 51));
         jCheckBox9.setText("2 mil");
+        jCheckBox9.addItemListener(this::innerItemStateChanged);
 
         jCheckBox10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox10.setForeground(new java.awt.Color(255, 51, 51));
         jCheckBox10.setText("1 mil");
+        jCheckBox10.addItemListener(this::innerItemStateChanged);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
@@ -315,12 +327,32 @@ public class FilterWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        updateFilter();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void availActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availActionPerformed
+    private void innerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_innerItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_availActionPerformed
+        
+    }//GEN-LAST:event_innerItemStateChanged
 
+    // 1. Add this helper method inside FilterWindow
+    private void updateFilter() {
+        // Send all checkbox states to RealEstate.java
+        
+        boolean[] visible = realEstate.filter(
+            inner.isSelected(), outer.isSelected(),
+            single.isSelected(), duplex.isSelected(), townhouse.isSelected(),
+            avail.isSelected(), reserved.isSelected(), sold.isSelected(),
+            jCheckBox10.isSelected(), // 1 mil
+            jCheckBox9.isSelected(),  // 2 mil
+            jCheckBox8.isSelected(),  // 3 mil
+            jCheckBox7.isSelected(),  // 4 mil
+            jCheckBox6.isSelected()   // 5 mil
+        );
+        
+        dashboard.updateVisibility(visible);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox avail;
     private javax.swing.JCheckBox duplex;
