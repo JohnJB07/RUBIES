@@ -407,34 +407,47 @@ public class BuyWindow extends javax.swing.JFrame {
         System.out.println("[UPDATE]: Confirming Dialog");
         if (JOptionPane.showConfirmDialog(jButton1, "Would you like to buy the lot?", 
                 "Notice", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            
-            if (lot.getStatus().equals("Reserved") || lot.getStatus().equals("Sold")) {
-                System.out.println("[NOTICE]: Lot cannot be reserved or bought");
-                JOptionPane.showMessageDialog(jButton1, "Lot is not available.");
-            } else {
-                int result = dashboard.buyTheProperty(lot);
-                
-                if (!lot.getStatus().equals("Sold")) {
-                    switch (result) {
-                        case -1:
-                            JOptionPane.showMessageDialog(jButton1, "Lot is not available.");
-                            break;
-                        case 0:
+            if (lot.getStatus() == "Reserved") {
+                if (Lot.getUserLoginIndex() == User.getLoginIndx()) {
+                    int result = dashboard.buyTheProperty(lot);
+                    if (!lot.getStatus().equals("Sold")) {
+                        try {
                             lot.setStatus("Sold");
                             System.out.println("[UPDATE]: Bought lot");
-                            
+
                             DecimalFormat df = new DecimalFormat("#,##0.00");
                             if (!isCash) {
                                 double currentOwed = user.getCustomer()[User.getLoginIndx()].getTotalOwed(); 
                                 user.getCustomer()[User.getLoginIndx()].addTotalOwed(currentOwed + loanAmount); 
                             }
-                            
+
                             JOptionPane.showMessageDialog(jButton1, "Bought the lot.");
                             dispose();
-                            break;
-                        default:
+                        } catch(Exception e) {
                             System.out.println("[ERROR]: Unexpected behaviour occured.");
-                            break;
+                        }
+                    }
+                }
+            } else if (lot.getStatus().equals("Sold")) {
+                System.out.println("[NOTICE]: Lot cannot be reserved or bought");
+                JOptionPane.showMessageDialog(jButton1, "Lot is not available.");
+            } else {
+                int result = dashboard.buyTheProperty(lot);
+                if (!lot.getStatus().equals("Sold")) {
+                    try {
+                        lot.setStatus("Sold");
+                        System.out.println("[UPDATE]: Bought lot");
+                            
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        if (!isCash) {
+                            double currentOwed = user.getCustomer()[User.getLoginIndx()].getTotalOwed(); 
+                            user.getCustomer()[User.getLoginIndx()].addTotalOwed(currentOwed + loanAmount); 
+                        }
+                        
+                        JOptionPane.showMessageDialog(jButton1, "Bought the lot.");
+                        dispose();
+                    } catch(Exception e) {
+                        System.out.println("[ERROR]: Unexpected behaviour occured.");
                     }
                 }
             }

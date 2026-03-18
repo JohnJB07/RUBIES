@@ -106,11 +106,14 @@ public class BalanceWindow extends javax.swing.JFrame {
             } else {
                 user.getCustomer()[User.getLoginIndx()].addBalance(balance);
                 System.out.println("[UPDATE]: Added balance - " + user.getCustomer()[User.getLoginIndx()].getBalance());
+                System.out.println("mambo");
                 db.updateBalanceLabel();
+                System.out.println("teio");
                 dispose();
             }
         } catch(Exception e) {
             System.out.println("[ERROR]: An error occured.");
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

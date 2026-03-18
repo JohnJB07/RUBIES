@@ -52,17 +52,9 @@ public class Customer extends Stakeholders {
     public double getBalance() {
         return accountBalance;
     }
-
-    public String balanceString() {
-        return "Balance: " + accountBalance;
-    }
     
     public double getGMI() {
         return GMI;
-    }
-    
-    public String gmiString() {
-        return "Gross Monthly Income: " + GMI;
     }
 
     public void setGMI(double GMI) {
