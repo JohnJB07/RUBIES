@@ -183,7 +183,7 @@ public class Login extends javax.swing.JFrame {
                 break;
             case 0: // Go to dashboard
                 if (User.getLoginType() == 1) {
-                    AgentAvailabilityWindow availabilityWindow = new AgentAvailabilityWindow(user, re);
+                    AgentAvailabilityWindow availabilityWindow = new AgentAvailabilityWindow(admin, user, re);
                     availabilityWindow.setLocationRelativeTo(null);
                     availabilityWindow.setVisible(true);
                     dispose();

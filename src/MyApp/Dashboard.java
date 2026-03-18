@@ -1310,7 +1310,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        AgentAvailabilityWindow availabilityWindow = new AgentAvailabilityWindow(user, realEstate);
+        AgentAvailabilityWindow availabilityWindow = new AgentAvailabilityWindow(admin, user, realEstate);
         availabilityWindow.setLocationRelativeTo(null);
         availabilityWindow.setVisible(true);
         dispose();

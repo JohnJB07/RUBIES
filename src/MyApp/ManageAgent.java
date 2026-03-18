@@ -28,33 +28,40 @@ public class ManageAgent extends javax.swing.JFrame {
         this.user = user;
         this.re = re;
         initComponents();
-        
         loadAgentTable();
+        getContentPane().setBackground(java.awt.Color.BLACK);
     }
 
-    ManageAgent() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     private void loadAgentTable() {
-    javax.swing.table.DefaultTableModel model = 
-        (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        javax.swing.table.DefaultTableModel model =
+            new javax.swing.table.DefaultTableModel(
+                new Object[][] {},
+                new String[] {"Agent", "LicenseNo", "Status"}
+            ) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // Only allow editing in the Status column (index 2)
+                    return column == 2;
+                }
+            };
 
-    model.setRowCount(0); // clear table
+        Agent[] agents = user.getAgent();
+        int count = User.getAgentCnt();
 
-    Agent[] agents = user.getAgent();
-    int count = User.getAgentCnt();
+        for (int i = 0; i < count; i++) {
+            Agent a = agents[i];
+            model.addRow(new Object[]{
+                a.getUsername(),
+                a.getLicenseNo(),
+            });
+        }
 
-    for (int i = 0; i < count; i++) {
-        Agent a = agents[i];
-
-        model.addRow(new Object[]{
-            a.getUsername(),
-            a.getLicenseNo(),
-            a.getStatus()
-        });
+        jTable1.setModel(model);
+        javax.swing.JComboBox<String> statusCombo =
+            new javax.swing.JComboBox<>(new String[]{"Available", "Unavailable"});
+        jTable1.getColumnModel().getColumn(2).setCellEditor(new javax.swing.DefaultCellEditor(statusCombo));
     }
-}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,6 +80,8 @@ public class ManageAgent extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setResizable(false);
 
+        jTable1.setBackground(new java.awt.Color(51, 51, 51));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -89,8 +98,22 @@ public class ManageAgent extends javax.swing.JFrame {
             new String [] {
                 "Agent", "licenseNo", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jButton2.setBackground(new java.awt.Color(255, 0, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,21 +126,21 @@ public class ManageAgent extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,9 +148,9 @@ public class ManageAgent extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Directory directory = new Directory(admin, user, re);
-        directory.setLocationRelativeTo(null);
-        directory.setVisible(true);
+        Directory directoryWindow = new Directory(admin, user, re);
+        directoryWindow.setLocationRelativeTo(null);
+        directoryWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
